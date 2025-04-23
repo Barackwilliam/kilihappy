@@ -5,13 +5,13 @@ from .models import Service,Destination,Package,Step_for_booking,Team,User_Testi
 # Create your views here.
 
 def index(request):
-    services = Service.objects.all()
-    destination = Destination.objects.all()
-    package = Package.objects.all()
-    abouts = About_This_Organization.objects.all()
-    step =  Step_for_booking.objects.all()
-    teams = Team.objects.all()
-    testimonial = User_Testimonial.objects.all()
+    services = Service.objects.all()[:3]
+    destination = Destination.objects.all()[:3]
+    package = Package.objects.all()[:3]
+    abouts = About_This_Organization.objects.all()[:1]
+    step =  Step_for_booking.objects.all()[:3]
+    teams = Team.objects.all()[:3]
+    testimonial = User_Testimonial.objects.all()[:3]
     gallery = Gallery.objects.all()
 
     context = {
@@ -29,7 +29,7 @@ def index(request):
 
 
 def booking(request):
-    destination = Destination.objects.all()
+    destination = Destination.objects.all()[:3]
     step =  Step_for_booking.objects.all()
     gallery = Gallery.objects.all()
 
@@ -85,11 +85,11 @@ def team(request):
     return render(request, 'team.html',context)
 
 def package(request):
-    destination = Destination.objects.all()
+    destination = Destination.objects.all()[:3]
     package = Package.objects.all()
     gallery = Gallery.objects.all()
 
-    step =  Step_for_booking.objects.all()
+    step =  Step_for_booking.objects.all()[:3]
 
     context = { 
     'package':package,
@@ -148,7 +148,7 @@ def contact(request):
     return render(request, 'contact.html', context)
 
 def about(request):
-    abouts = About_This_Organization.objects.all()
+    abouts = About_This_Organization.objects.all()[:1]
 
 
     context = { 
