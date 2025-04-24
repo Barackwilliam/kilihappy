@@ -14,4 +14,8 @@ urlpatterns = [
     path('team/', views.team, name='team'),
     path('testimonial/', views.testimonial, name='testimonial'),
 
+
+    path('tour_list/', views.tour_list, name='tour_list'),
+    path('tour_detail/<int:pk>/', views.tour_detail, name='tour_detail'),
+
 ]

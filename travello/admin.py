@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Destination,Service,Team,User_Testimonial,Package,Step_for_booking,Gallery,About_This_Organization,Booking_Report,Contact_Message
+from .models import Destination,Service,Team,User_Testimonial,Package,Step_for_booking,Gallery,About_This_Organization
+from .models import Tour,Booking_Report,Contact_Message,Tour_Itinerary
 
 # Register your models here.
 
@@ -64,3 +65,17 @@ class Contact_MessageAdmin(admin.ModelAdmin):
     list_display = ('name','email','subject','message','created_at')
     search_fields =  ('name','email', 'subject')
 
+
+@admin.register(Tour)
+class TourAdmin(admin.ModelAdmin):
+    list_display = ('title', 'location', 'tour_type', 'days', 'price')
+    search_fields = ('title', 'location', 'tour_type')
+    list_filter = ('tour_type', 'location')
+
+
+
+@admin.register(Tour_Itinerary)
+class Tour_ItineraryAdmin(admin.ModelAdmin):
+    list_display = ('tour', 'day_number', 'title', 'elevation_start', 'elevation_end', 'distance_km', 'hiking_time', 'habitat')
+    search_fields = ('title', 'description', 'habitat')
+    list_filter = ('tour', 'habitat')

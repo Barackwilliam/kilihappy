@@ -192,3 +192,26 @@ def book_tour(request):
     return render(request, 'booking_form.html',{'destination': destination})
 
 
+from django.shortcuts import render, get_object_or_404
+from .models import Tour
+
+
+def tour_list(request):
+    tours = Tour.objects.all()
+
+    location = request.GET.get('location')
+    tour_type = request.GET.get('type')
+
+    if location:
+        tours = tours.filter(location__icontains=location)
+    if tour_type:
+        tours = tours.filter(tour_type__iexact=tour_type)
+
+    # Collect unique tour types for dropdown
+    tour_types = Tour.objects.order_by('tour_type').values_list('tour_type', flat=True).distinct()
+
+    return render(request, 'tour_list.html', {'tours': tours, 'tour_types': tour_types})
+
+def tour_detail(request, pk):
+    tour = get_object_or_404(Tour, pk=pk)
+    return render(request, 'tour_detail.html', {'tour': tour})

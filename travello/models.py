@@ -110,3 +110,41 @@ class Contact_Message(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.subject}"
+
+from django.db import models
+
+class Tour(models.Model):
+    TOUR_TYPES = [
+        ('Beach', 'Beach'),
+        ('Hiking', 'Hiking'),
+        ('Safari', 'Safari'),
+        ('Cultural', 'Cultural'),
+        ('Kilimanjaro', 'Kilimanjaro'),
+    ]
+
+    title = models.CharField(max_length=255)
+    location = models.CharField(max_length=100)
+    days = models.IntegerField()
+    route = models.CharField(max_length=100, blank=True, null=True)
+    overview = models.TextField()
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    featured_image = CloudinaryField('image', blank=True, null=True) 
+    tour_type = models.CharField(max_length=100, choices=TOUR_TYPES, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Tour_Itinerary(models.Model):
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='itinerary')
+    day_number = models.IntegerField()
+    title = models.CharField(max_length=255)
+    elevation_start = models.CharField(max_length=50, blank=True, null=True)
+    elevation_end = models.CharField(max_length=50, blank=True, null=True)
+    distance_km = models.FloatField(blank=True, null=True)
+    hiking_time = models.CharField(max_length=50, blank=True, null=True)
+    habitat = models.CharField(max_length=100, blank=True, null=True)
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"Day {self.day_number} - {self.title}"
