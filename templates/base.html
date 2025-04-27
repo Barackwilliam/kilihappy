@@ -7,6 +7,88 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        
+    /* Hero Section Background */
+/* .hero-bg {
+    background: url('/path/to/your/tanzania-image.jpg') no-repeat center center/cover;
+    height: 80vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+} */
+
+.hero-bg {
+    background-image: url("{% static 'img/booking.jpg' %}");
+    background-size: cover;  /* Makes the image cover the entire container */
+    background-position: center center;  /* Centers the image */
+    background-repeat: no-repeat;  /* Ensures the image does not repeat */
+    height: 100vh;  /* Makes the hero section take the full viewport height */
+}
+
+/* Overlay to make text stand out */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+/* Title Styling */
+.hero-bg h1 {
+    font-size: 3.5rem; /* Larger font size for big impact */
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+    text-transform: uppercase; /* Capitalize the title */
+    line-height: 1.2;
+    animation: fadeInUp 2s ease-out; /* Add animation */
+}
+
+/* Subtitle Styling */
+.hero-bg p {
+    font-size: 1.5rem; /* Slightly larger subtitle text */
+    font-weight: 300;
+    color: #ffffff;
+    margin-top: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    animation: fadeInUp 3s ease-out; /* Fade-in animation with delay */
+}
+
+/* Button Styling */
+.btn-warning {
+    background-color: #FFB81C; /* Tanzania-inspired bright yellow */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: pulse 1.5s ease-out infinite;
+}
+
+.btn-warning:hover {
+    background-color: #FF9E00; /* Hover effect */
+    transform: scale(1.1); /* Slight scale-up on hover */
+}
+
+/* Pulse animation for buttons */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* FadeIn animation for elements */
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
 
         /* Floating WhatsApp Button */
 .whatsapp-icon {

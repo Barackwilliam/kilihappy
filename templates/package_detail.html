@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <!-- Hero Section Start -->
-    <div class="container-fluid hero-bg py-5 mb-5 position-relative overflow-hidden">
-        <div class="container text-center text-white position-relative z-index-1">
-            <h1 class="display-4 fw-bold animated fadeInUp">{{ package.location }} Adventure</h1>
-            <p class="lead mb-4 animated fadeInUp">Experience the beauty of Tanzania like never before. Explore, adventure, and create memories!</p>
-            <a href="{% url 'package' %}" class="btn btn-warning btn-lg rounded-pill shadow-lg animated pulse infinite">Explore More</a>
-        </div>
-        <div class="hero-overlay"></div>
+   <!-- Hero Section Start -->
+<div class="container-fluid hero-bg py-5 mb-5 position-relative overflow-hidden">
+    <div class="container text-center text-white position-relative z-index-1">
+        <h1 class="display-3 fw-bold text-uppercase animated fadeInUp">{{ package.location }} Adventure</h1>
+        <p class="lead mb-5 animated fadeInUp fs-2">Experience the majestic beauty of Tanzania like never before. Adventure awaits!</p>
+        <a href="{% url 'package' %}" class="btn btn-warning btn-lg rounded-pill shadow-lg animated pulse infinite">Explore More</a>
     </div>
-    <!-- Hero Section End -->
+    <div class="hero-overlay"></div>
+</div>
+<!-- Hero Section End -->
+
 
     <!-- Package Details Section Start -->
     <section id="package-details" class="container-xxl py-5">
