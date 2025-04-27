@@ -183,7 +183,17 @@
                     <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
                     <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
                     <a href="{% url 'service' %}" class="nav-item nav-link">Services</a>
-                    <a href="{% url 'package' %}" class="nav-item nav-link">Packages</a>
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Packages</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="{% url 'package' %}" class="dropdown-item">View All packages</a>
+                            {% for pac in packages %}
+                                <a href="{% url 'package_detail' pac.id %}" class="dropdown-item">{{ pac.location }}</a>  <!-- Link to package details -->
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
                     <a href="{% url 'tour_list' %}" class="nav-item nav-link">Tours</a>
 
 

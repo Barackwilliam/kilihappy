@@ -2,6 +2,20 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
+
+<div class="col-md-6">
+    <div class="form-floating">
+        <select name="destination" class="form-select bg-transparent" id="select1">
+            {% for dest in destinations %}
+                <option value="{{ dest.location }}">{{ dest.location }}</option>
+            {% endfor %}
+        </select>
+        <label for="select1">Destination</label>
+    </div>
+</div>
+
+
 {% block content %}
 <section class="py-5 bg-light">
     <div class="container">
@@ -40,3 +54,15 @@
     </div>
 </section>
 {% endblock %}
+
+
+
+
+
+
+
+
+<h5 class="card-title">Contact Organizer</h5>
+<p><strong>WhatsApp:</strong> <a href="https://wa.me/{{ tour.contact_whatsapp }}">{{ tour.contact_whatsapp }}</a></p>
+<p><strong>Email:</strong> <a href="mailto:{{ tour.contact_email }}">{{ tour.contact_email }}</a></p>
+<p><strong>Website:</strong> <a href="{{ tour.website }}" target="_blank">{{ tour.website }}</a></p>

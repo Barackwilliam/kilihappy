@@ -10,6 +10,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('destination/', views.destination, name='destination'),
     path('package/', views.package, name='package'),
+    path('package/<int:id>/', views.package_detail, name='package_detail'),
     path('service/', views.service, name='service'),
     path('team/', views.team, name='team'),
     path('testimonial/', views.testimonial, name='testimonial'),
