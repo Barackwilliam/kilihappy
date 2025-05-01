@@ -23,20 +23,21 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       animation: fadeIn 2s ease-in;
+      padding: 1rem;
     }
 
     .overlay {
       background-color: rgba(0, 0, 0, 0.7);
       padding: 3rem;
       border-radius: 20px;
-      width: 90%;
+      width: 100%;
       max-width: 600px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
       backdrop-filter: blur(5px);
-      transition: all 0.3s ease;
       text-align: center;
+      transition: all 0.3s ease;
     }
 
     .logo {
@@ -46,7 +47,7 @@
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid #f5a623;
-      animation: bounceIn 1.5s ease infinite; /* Continuous animation */
+      animation: rotateLogo 8s linear infinite;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
@@ -106,11 +107,53 @@
       to { opacity: 1; transform: scale(1); }
     }
 
-    @keyframes bounceIn {
-      0% { transform: scale(0.3); opacity: 0; }
-      50% { transform: scale(1.1); opacity: 0.9; }
-      70% { transform: scale(0.95); }
-      100% { transform: scale(1); opacity: 1; }
+    @keyframes rotateLogo {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 768px) {
+      .overlay {
+        padding: 2rem 1.2rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .logo {
+        width: 80px;
+        height: 80px;
+      }
+
+      .countdown {
+        font-size: 1.2rem;
+      }
+
+      button {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .countdown {
+        font-size: 1rem;
+      }
+
+      .overlay {
+        padding: 1.5rem 1rem;
+        border-radius: 12px;
+      }
     }
   </style>
 </head>
@@ -126,7 +169,7 @@
       <div class="countdown" id="sw-countdown">Inapakia muda...</div>
       <div class="contact">
         <p>Kwa mawasiliano: <a href="mailto:Kilihappytanzaniaadvanture@gmail.com">Kilihappytanzaniaadvanture@gmail.com</a></p>
-        <p>Au tupigie: +255658571653</p>
+        <p>Au tupigie:  +255658571653</p>
       </div>
       <p style="margin-top: 1.5rem;">Asante kwa uvumilivu wako!</p>
     </div>
@@ -139,7 +182,7 @@
       <div class="countdown" id="en-countdown">Loading countdown...</div>
       <div class="contact">
         <p>Contact us: <a href="mailto:Kilihappytanzaniaadvanture@gmail.com">Kilihappytanzaniaadvanture@gmail.com</a></p>
-        <p>Or call us: +255658571653</p>
+        <p>Or call us:  +255658571653</p>
       </div>
       <p style="margin-top: 1.5rem;">Thank you for your patience!</p>
     </div>
