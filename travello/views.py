@@ -29,8 +29,8 @@ def index(request):
         'abouts':abouts
     }
 
-    # return render(request, 'index.html',context)
-    return render(request,'close-page.html')
+    return render(request, 'index.html',context)
+    # return render(request,'close-page.html')
 
 
 def booking(request):
