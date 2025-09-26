@@ -20,6 +20,8 @@ from decouple import config
 
 # Load .env file
 load_dotenv()
+IPINFO_TOKEN = "0fe180f7e54cf6"
+
 
 GEOIP_PATH = '/path/to/GeoIP/database/'
 
