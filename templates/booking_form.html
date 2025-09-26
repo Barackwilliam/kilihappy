@@ -1,0 +1,130 @@
+<section id="booking" class="py-5" style="background: linear-gradient(135deg, #0783f7 0%, #0400ff 100%);">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="card shadow-lg border-0 rounded-4">
+          <div class="card-body p-5">
+            <!-- Heading -->
+            <h2 class="text-center fw-bold mb-3">Plan Your Dream Safari</h2>
+            <p class="text-center text-muted mb-5">
+              Fill out the form below and our experts will contact you shortly.
+            </p>
+
+            <!-- Django Form -->
+            <form method="post" novalidate>
+              {% csrf_token %}
+
+              <!-- Personal Info -->
+              <div class="row g-4 mb-4">
+                <div class="col-md-6">{{ form.first_name }}</div>
+                <div class="col-md-6">{{ form.last_name }}</div>
+                <div class="col-md-6">{{ form.email }}</div>
+                <div class="col-md-6">{{ form.phone_number }}</div>
+                <div class="col-md-12">{{ form.country }}</div>
+              </div>
+
+              <!-- Dates & Numbers -->
+              <div class="row g-4 mb-4">
+                <div class="col-md-6">
+                  <label class="form-label small">Arrival Date</label>
+                  {{ form.arrival_date }}
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small">Departure Date</label>
+                  {{ form.departure_date }}
+                </div>
+                <div class="col-md-6">{{ form.adults }}</div>
+                <div class="col-md-6">{{ form.children }}</div>
+              </div>
+
+              <!-- Interested In -->
+              <div class="mb-4">
+                <label class="fw-semibold mb-3 d-block">Interested In:</label>
+                <div class="row g-3">
+                  {% for checkbox in form.interested_in %}
+                    <div class="col-md-6 col-lg-4">
+                      <div class="custom-option p-3 rounded border text-center animate__animated animate__fadeIn"
+                           onclick="toggleOption(this)">
+                        {{ checkbox.tag }}
+                        <label class="form-check-label d-block mt-2">{{ checkbox.choice_label }}</label>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- Message -->
+              <div class="mb-4">{{ form.message }}</div>
+
+              <!-- Submit -->
+              <div class="text-center">
+                <button type="submit" class="btn btn-gradient btn-lg px-5 py-3" onclick="showLoading(event)">
+                  <i class="fas fa-paper-plane me-2"></i> Send Inquiry
+                </button>
+              </div>
+            </form>
+
+            {% if messages %}
+              <div class="mt-4">
+                {% for message in messages %}
+                  <div class="alert alert-success text-center fw-bold">{{ message }}</div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Custom gradient button & option hover -->
+<style>
+  .btn-gradient {
+    background: linear-gradient(45deg, #1e3c72, #00bfff);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+  }
+  .btn-gradient:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  }
+  .custom-option {
+    cursor: pointer;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  .custom-option:hover {
+    transform: translateY(-2px) scale(1.02);
+    background-color: #e0f7ff;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  }
+  .custom-option.active {
+    border-color: #00bfff;
+    background-color: #d0f0ff;
+  }
+</style>
+
+<!-- Interactive Checkbox Script -->
+<script>
+function toggleOption(element) {
+  const input = element.querySelector('input[type="checkbox"]');
+  if (input) {
+    input.checked = !input.checked;
+    element.classList.toggle('active', input.checked);
+  }
+}
+
+// Initialize active states in case of form reload
+document.querySelectorAll('.custom-option').forEach(el => {
+  const input = el.querySelector('input[type="checkbox"]');
+  if (input.checked) {
+    el.classList.add('active');
+  }
+});
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>

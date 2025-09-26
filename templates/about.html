@@ -1,0 +1,79 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <!-- <h2 class="fw-bold text-primary">About Us</h2>
+            <p class="text-muted">Get to know more about who we are and what drives us.</p> -->
+        </div>
+
+        {% if abouts %}
+            {% for i in abouts %}
+            <div class="row align-items-center mb-5 bg-white shadow rounded-4 p-4">
+                <div class="col-lg-6 mb-3 mb-lg-0">
+                    <img src="{{ i.image }}" class="img-fluid rounded-4 shadow-sm w-100" style="object-fit: cover; max-height: 400px;" alt="About Image">
+                </div>.
+                <div class="col-lg-6">
+                    <h3 class="text-dark fw-bold">{{ i.title }}</h3>
+                    <p style="color: black;" class="mb-4">{{ i.content }}</p>
+
+                    <h5 class="text-primary">Our Vision</h5>
+                    <p style="color: black;">{{ i.vision }}</p>
+
+                    <h5 class="text-primary">Our Mission</h5>
+                    <p style="color: black;">{{ i.mission }}</p>
+
+                    <p class="text-end text-muted fst-italic">
+                        <small>Last updated: {{ i.last_updated|date:"F d, Y" }}</small>
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-info text-center">
+                <h4>Information about our organization will be available soon.</h4>
+            </div>
+        {% endif %}
+    </div>
+
+
+
+
+     <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 style="color: red;" class="section-title bg-white text-center px-3">Travel Guide</h6>
+                <h1 class="mb-5">Meet Our Team</h1>
+            </div>
+            <div class="row g-4">
+  {% for i in teams %}
+        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="team-item">
+                <div class="overflow-hidden">
+                    <img class="img-fluid" src="{{ i.image }}" alt="{{ i.Full_name }}">
+                </div>
+                <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
+                    {% if i.facebook_link %}
+                        <a class="btn btn-square mx-1" href="{{ i.facebook_link }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    {% endif %}
+                    {% if i.twitter_link %}
+                        <a class="btn btn-square mx-1" href="{{ i.twitter_link }}" target="_blank"><i class="fab fa-twitter"></i></a>
+                    {% endif %}
+                    {% if i.instagram_link %}
+                        <a class="btn btn-square mx-1" href="{{ i.instagram_link }}" target="_blank"><i class="fab fa-instagram"></i></a>
+                    {% endif %}
+                </div>
+                <div class="text-center p-4">
+                    <h5 class="mb-0">{{ i.Full_name }}</h5>
+                    <small>{{ i.designation }}</small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+                
+            </div>
+        </div>
+</section>
+{% endblock %}

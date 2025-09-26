@@ -1,0 +1,66 @@
+  {% extends 'base.html' %}
+{% load static %}
+{% load package_icons %}
+
+
+{% block title %}{{ trip.title }}{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="mb-3">{{ trip.title }}</h1>
+      {% if trip.featured_image %}
+        <img src="{{ trip.featured_image }}" class="img-fluid mb-4 rounded" alt="{{ trip.title }}">
+      {% endif %}
+      <p><strong>Location:</strong> {{ trip.location }}</p>
+      <p><strong>Days:</strong> {{ trip.days }}</p>
+      <p><strong>Type:</strong> {{ trip.trip_type }}</p>
+      {% if trip.route %}<p><strong>Route:</strong> {{ trip.route }}</p>{% endif %}
+      {% if trip.price %}<p><strong>Price:</strong> ${{ trip.price }}</p>{% endif %}
+      <h5 class="mt-4">Overview</h5>
+      <p>{{ trip.overview }}</p>
+
+      <h5 class="mt-5">Day Trip Itinerary</h5>
+      <div class="accordion" id="itineraryAccordion">
+        {% for day in trip.itinerary.all %}
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="heading{{ day.day_number }}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ day.day_number }}" aria-expanded="false" aria-controls="collapse{{ day.day_number }}">
+              Day {{ day.day_number }}: {{ day.title }}
+            </button>
+          </h2>
+          <div id="collapse{{ day.day_number }}" class="accordion-collapse collapse" aria-labelledby="heading{{ day.day_number }}" data-bs-parent="#itineraryAccordion">
+            <div class="accordion-body">
+              {% if day.elevation_start and day.elevation_end %}<p><strong>Elevation:</strong> {{ day.elevation_start }} to {{ day.elevation_end }}</p>{% endif %}
+              {% if day.distance_km %}<p><strong>Distance:</strong> {{ day.distance_km }} km</p>{% endif %}
+              {% if day.hiking_time %}<p><strong>Hiking Time:</strong> {{ day.hiking_time }}</p>{% endif %}
+              {% if day.habitat %}<p><strong>Habitat:</strong> {{ day.habitat }}</p>{% endif %}
+              <p>{{ day.description }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body"> -->
+
+     
+{% include "includes_excludes_section.html" with includes=includes excludes=excludes %}
+
+
+
+</div>
+
+ <!-- Booking Start -->
+ {% include 'booking_form.html' %}
+
+ 
+
+
+  </div>
+</section>
+{% endblock %}
