@@ -233,7 +233,7 @@
         <tbody>
           {% for item in visits %}
           <tr>
-            <td><span class="ip-highlight">{{ item.ip_address }}</span></td>
+            <td><span style="color: black;">{{ item.ip_address }}</span></td>
             <td>{% if item.country %}<strong>{{ item.country }}, {{ item.city }}</strong>{% else %}<em>Unknown</em>{% endif %}</td>
             <td>{{ item.visit_count }}</td>
             <td><div class="timestamp">{{ item.timestamp|date:"M d, Y H:i" }}</div></td>
