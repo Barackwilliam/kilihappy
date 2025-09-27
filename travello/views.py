@@ -1296,9 +1296,141 @@ def dashboard_view(request):
 
 
 def meru_climbing(request):
-    return render(request, "meru_climbing.html") 
+    qn = FAQ.objects.all()
+    compan = company.objects.all()[:1]
+    home_text = Welcome_text.objects.all()[:1]
+    climbing = Kilimanjaro_climbing_image.objects.all()
+    tour_list = Explore_zanzibar.objects.all()
+    headline = Headline.objects.all()[:1]
+
+
+    services = Service.objects.all()[:3]
+    destinations = Travels_Destination.objects.all()[:3]
+    trips_list = Trip_DB.objects.all()
+    safari_list = Travel.objects.all()
+    abouts = About_This_Organization.objects.all()[:1]
+    step =  Step_for_booking.objects.all()[:3]
+    teams = Team.objects.all()[:3]
+    testimonial = User_Testimonial.objects.all()[:3]
+    # all_safaries = Safari.objects.all()
+    tours = Tour.objects.all()
+
+
+    gallery = Gallery.objects.all()
+    
+    context = {
+          'qn':qn,
+        "form": form,
+      'tour_list':tour_list,
+        'tours':tours,
+        'services':services,
+        'destinations':destinations,
+        'headline':headline,
+       "trips_list": trips_list,
+        "safari_list": safari_list,
+        # 'packages': all_packages,
+        'step':step,
+        'compan':compan,
+        'teams':teams,
+       'climbing':climbing,
+        'testimonial':testimonial,
+        'gallery':gallery,
+        'abouts':abouts,
+        'home_text':home_text
+    }
+
+
+    return render(request, "meru_climbing.html", context) 
 
 def Momela_route_3(request):
-    return render(request, "Momela_route_3.html") 
+    qn = FAQ.objects.all()
+    compan = company.objects.all()[:1]
+    home_text = Welcome_text.objects.all()[:1]
+    climbing = Kilimanjaro_climbing_image.objects.all()
+    tour_list = Explore_zanzibar.objects.all()
+    headline = Headline.objects.all()[:1]
+
+
+    services = Service.objects.all()[:3]
+    destinations = Travels_Destination.objects.all()[:3]
+    trips_list = Trip_DB.objects.all()
+    safari_list = Travel.objects.all()
+    abouts = About_This_Organization.objects.all()[:1]
+    step =  Step_for_booking.objects.all()[:3]
+    teams = Team.objects.all()[:3]
+    testimonial = User_Testimonial.objects.all()[:3]
+    # all_safaries = Safari.objects.all()
+    tours = Tour.objects.all()
+
+
+    gallery = Gallery.objects.all()
+    
+    context = {
+          'qn':qn,
+        "form": form,
+      'tour_list':tour_list,
+        'tours':tours,
+        'services':services,
+        'destinations':destinations,
+        'headline':headline,
+       "trips_list": trips_list,
+        "safari_list": safari_list,
+        # 'packages': all_packages,
+        'step':step,
+        'compan':compan,
+        'teams':teams,
+       'climbing':climbing,
+        'testimonial':testimonial,
+        'gallery':gallery,
+        'abouts':abouts,
+        'home_text':home_text
+    }
+
+
+    return render(request, "Momela_route_3.html", context) 
+
 def Momela_route_4(request):
-    return render(request, "Momela_route_4.html") 
+    qn = FAQ.objects.all()
+    compan = company.objects.all()[:1]
+    home_text = Welcome_text.objects.all()[:1]
+    climbing = Kilimanjaro_climbing_image.objects.all()
+    tour_list = Explore_zanzibar.objects.all()
+    headline = Headline.objects.all()[:1]
+
+
+    services = Service.objects.all()[:3]
+    destinations = Travels_Destination.objects.all()[:3]
+    trips_list = Trip_DB.objects.all()
+    safari_list = Travel.objects.all()
+    abouts = About_This_Organization.objects.all()[:1]
+    step =  Step_for_booking.objects.all()[:3]
+    teams = Team.objects.all()[:3]
+    testimonial = User_Testimonial.objects.all()[:3]
+    # all_safaries = Safari.objects.all()
+    tours = Tour.objects.all()
+
+
+    gallery = Gallery.objects.all()
+    
+    context = {
+          'qn':qn,
+      'tour_list':tour_list,
+        'tours':tours,
+        'services':services,
+        'destinations':destinations,
+        'headline':headline,
+       "trips_list": trips_list,
+        "safari_list": safari_list,
+        # 'packages': all_packages,
+        'step':step,
+        'compan':compan,
+        'teams':teams,
+       'climbing':climbing,
+        'testimonial':testimonial,
+        'gallery':gallery,
+        'abouts':abouts,
+        'home_text':home_text
+    }
+
+
+    return render(request, "Momela_route_4.html",context) 
