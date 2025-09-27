@@ -1238,6 +1238,18 @@ class TrackActivityView(View):
             return JsonResponse({"status": "error", "message": str(e)}, status=400)
 
 
+
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.db.models import Count, Avg
+
+# Helper: hakikisha user ni staff/admin
+def staff_check(user):
+    return user.is_staff or user.is_superuser
+
+
+
+@login_required(login_url="/admin/login/")   # peleka kwa login ya admin
+@user_passes_test(staff_check)              # zuia non-admin wasione
 def dashboard_view(request):
     visits = UserVisit.objects.all().order_by("-timestamp")[:100]
     total_visits = UserVisit.objects.count()
@@ -1280,150 +1292,6 @@ def dashboard_view(request):
         "local_visits": local_visits,
     }
     return render(request, "dashboard.html", context)
-
-
-# import json
-# import requests
-# from django.db.models import Count, Avg
-# from django.http import JsonResponse
-# from django.shortcuts import render
-# from django.utils.decorators import method_decorator
-# from django.views import View
-# from django.views.decorators.csrf import csrf_exempt
-# from django.contrib.gis.geoip2 import GeoIP2
-# from .models import UserVisit, UserActivity
-
-# def get_location_from_ip(ip_address):
-#     """Get location information from IP address"""
-#     try:
-#         g = GeoIP2()
-#         location_data = g.city(ip_address)
-#         return {
-#             'country': location_data['country_name'],
-#             'region': location_data['region'],
-#             'city': location_data['city']
-#         }
-#     except:
-#         try:
-#             response = requests.get(f'https://ipapi.co/{ip_address}/json/')
-#             if response.status_code == 200:
-#                 data = response.json()
-#                 return {
-#                     'country': data.get('country_name'),
-#                     'region': data.get('region'),
-#                     'city': data.get('city')
-#                 }
-#         except:
-#             pass
-#     return {'country': None, 'region': None, 'city': None}
-
-# def get_client_ip(request):
-#     """Get client IP address"""
-#     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-#     if x_forwarded_for:
-#         ip = x_forwarded_for.split(',')[0]
-#     else:
-#         ip = request.META.get('REMOTE_ADDR')
-#     return ip
-
-
-# @method_decorator(csrf_exempt, name='dispatch')
-# class TrackVisitView(View):
-#     def post(self, request):
-#         data = json.loads(request.body.decode('utf-8'))
-
-#         ip_address = get_client_ip(request)
-#         user_agent = request.META.get('HTTP_USER_AGENT', '')
-#         page_visited = data.get('page_visited', '')
-#         referrer = data.get('referrer', '')
-
-#         visit, created = UserVisit.objects.get_or_create(
-#             ip_address=ip_address,
-#             page_visited=page_visited,
-#             defaults={
-#                 'user_agent': user_agent,
-#                 'referrer': referrer,
-#                 'visit_count': 1
-#             }
-#         )
-
-#         if not created:
-#             visit.visit_count += 1
-#             visit.save()
-
-#         location = get_location_from_ip(ip_address)
-#         if location['country']:
-#             visit.country = location['country']
-#             visit.region = location['region']
-#             visit.city = location['city']
-#             visit.save()
-
-#         return JsonResponse({'status': 'success', 'visit_id': visit.id})
-
-
-# @method_decorator(csrf_exempt, name='dispatch')
-# class TrackActivityView(View):
-#     def post(self, request):
-#         try:
-#             data = json.loads(request.body.decode('utf-8'))
-#             visit_id = data.get('visit_id')
-#             activity_type = data.get('activity_type')
-#             activity_details = data.get('activity_details', '')
-
-#             visit = UserVisit.objects.get(id=visit_id)
-
-#             UserActivity.objects.create(
-#                 visit=visit,
-#                 activity_type=activity_type,
-#                 activity_details=activity_details
-#             )
-#             return JsonResponse({'status': 'success'})
-#         except Exception as e:
-#             return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
-
-
-# def dashboard_view(request):
-#     visits = UserVisit.objects.all().order_by('-timestamp')[:100]
-#     total_visits = UserVisit.objects.count()
-
-#     visits_by_country = (
-#         UserVisit.objects.values("country")
-#         .annotate(count=Count("id"))
-#         .order_by("-count")
-#     )
-
-#     avg_visits_per_ip = (
-#         UserVisit.objects.values("ip_address")
-#         .annotate(total=Count("id"))
-#         .aggregate(avg=Avg("total"))["avg"] or 0
-#     )
-#     avg_visits_per_ip = round(avg_visits_per_ip, 2)
-
-#     new_visits = (
-#         UserVisit.objects.values("ip_address")
-#         .annotate(c=Count("id"))
-#         .filter(c=1)
-#         .count()
-#     )
-#     returning_visits = (
-#         UserVisit.objects.values("ip_address")
-#         .annotate(c=Count("id"))
-#         .filter(c__gt=1)
-#         .count()
-#     )
-#     local_visits = UserVisit.objects.filter(country="Tanzania").count()
-
-#     context = {
-#         "visits": visits,
-#         "total_visits": total_visits,
-#         "visits_by_country": visits_by_country,
-#         "avg_visits_per_ip": avg_visits_per_ip,
-#         "new_visits": new_visits,
-#         "returning_visits": returning_visits,
-#         "local_visits": local_visits,
-#     }
-#     return render(request, "dashboard.html", context)
-
 
 
 
