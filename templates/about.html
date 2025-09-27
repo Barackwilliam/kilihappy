@@ -3,12 +3,23 @@
 {% load static %}
 
 {% block content %}
-<section class="py-5 bg-light">
+<section class="py-5 gradient-bg">
     <div class="container">
         <div class="text-center mb-5">
             <!-- <h2 class="fw-bold text-primary">About Us</h2>
             <p class="text-muted">Get to know more about who we are and what drives us.</p> -->
         </div>
+
+        <style>
+
+            .gradient-bg {
+  background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
+  color: white; /* ili maandishi yaonekane vizuri */
+  padding: 10px;
+  border-radius: 12px; /* rounded edges ili iwe smart */
+}
+
+        </style>
 
         {% if abouts %}
             {% for i in abouts %}
