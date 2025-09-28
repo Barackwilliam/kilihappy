@@ -1,99 +1,99 @@
 {% extends 'base.html' %}
-{% load static%}
+{% load static %}
 
 {% block content %}
-   <style>
+<style>
 .hero-header {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
                 url('{% static "img/bg-2.jpg" %}') center center/cover no-repeat;
     position: relative;
-    color: #fff;
+    color: #000000;
     min-height: 60vh;
     animation: zoomIn 10s ease-in-out infinite alternate;
     background-size: 110%;
     transition: background-size 0.5s ease-in-out;
 }
-
 @keyframes zoomIn {
-    0% {
-        background-size: 110%;
-    }
-    100% {
-        background-size: 150%;
-    }
+    0% { background-size: 110%; }
+    100% { background-size: 150%; }
 }
-
-            .gradient-bg {
-  background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
-  color: white; /* ili maandishi yaonekane vizuri */
-  padding: 10px;
-  border-radius: 12px; /* rounded edges ili iwe smart */
+.gradient-bg {
+    background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 15px;
+}
+.service-item {
+    background: #fff;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-item:hover {
+    color: #ffffff;
+    transform: translateY(-8px);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
 }
 </style>
 
+<!-- Hero Start -->
 <div class="container-fluid hero-header py-5 mb-5">
     <div class="container py-5">
         <div class="row justify-content-center py-5">
-            <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+            <div class="col-lg-10 text-center">
                 <h1 class="display-3 text-white fw-bold animated slideInDown">Services</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Services</li>
+                        <li class="breadcrumb-item active text-white" aria-current="page">Services</li>
                     </ol>
                 </nav>
             </div>
         </div>
     </div>
 </div>
+<!-- Hero End -->
 
-    <!-- Navbar & Hero End -->
-
-<!-- Service Start -->
+<!-- Services Start -->
 <div class="container py-5 gradient-bg">
     <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-        <h6 style="color: rgb(187, 21, 21);" class="section-title bg-white text-center  px-3">Services</h6>
-        <h1 style="color: #fff;" class="mb-5">Our Services</h1>
+        <h6 class="section-title bg-white text-center text-danger px-3 d-inline-block rounded">Services</h6>
+        <h1 style="color: white;" class="mb-5 fw-bold">Our Services</h1>
     </div>
-    <div class="row justify-content-center g-4">
+    <div class="row g-4">
         {% for service in services %}
-        <div class="col-auto wow fadeInUp" data-wow-delay="0.1s">
-            <div class="service-item rounded pt-3" style="width: fit-content;">
-                <div class="p-2">
-                    <img src="{{ service.image }}" style="width: 380px; height: auto;" alt="Service Image">
-                    <br><br>
-                    <h5 class="text-dark text-center">{{ service.title }}</h5>
-                    <p class="text-center">{{ service.description }}</p>
-                </div>
+        <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="service-item p-3 h-100 text-center">
+                <img src="{{ service.image }}" class="img-fluid rounded shadow-sm mb-3" alt="Service Image">
+                <h5 class="fw-bold text-dark">{{ service.title }}</h5>
+                <p style="color: #000000;">{{ service.description }}</p>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
+<!-- Services End -->
 
-
-
-
-    <!-- Testimonial Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="text-center">
-                <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
-                <h1 class="mb-5">Our Clients Say!!!</h1>
+<!-- Testimonial Start -->
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="text-center">
+            <h6 class="section-title bg-white text-center text-primary px-3 d-inline-block rounded">Testimonial</h6>
+            <h1 class="mb-5 fw-bold">Our Clients Say!!!</h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel position-relative">
+            {% for test in testimonial %}
+            <div class="testimonial-item bg-white text-center border rounded shadow-sm p-4">
+                <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3 img-fluid" 
+                     src="{{ test.image }}" style="width: 80px; height: 80px;" alt="Client">
+                <h5 class="mb-0 fw-bold">{{ test.Full_name }}</h5>
+                <p class="text-muted">{{ test.country }}</p>
+                <p class="mb-0 fst-italic">“{{ test.description }}”</p>
             </div>
-            <div class="owl-carousel testimonial-carousel position-relative">
-                {% for test in testimonial %}
-                <div class="testimonial-item bg-white text-center border p-4">
-                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{{test.image}}" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">{{test.Full_name}}</h5>
-                    <p>{{test.country}}</p>
-                    <p class="mb-0">{{test.description}}.</p>
-                </div>
-                    {% endfor %}
-            </div>
+            {% endfor %}
         </div>
     </div>
-    <!-- Testimonial End -->
-           
-    {% endblock %}
+</div>
+<!-- Testimonial End -->
+
+{% endblock %}
