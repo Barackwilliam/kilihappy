@@ -59,7 +59,7 @@
     }
   }
 </style>
-
+<br><br>
 <section class="gradient-bg py-5">
   <div class="container">
     <div class="row g-4">
@@ -125,15 +125,15 @@
         </div>
       </div>
 
-      <!-- Sidebar -->
-      <div class="col-lg-4">
+      
+    </div>
+  </div>
+  <!-- Sidebar -->
+      <div class="col-lg-12">
         <div class="glass-card p-4 mb-4">
           {% include "includes_excludes_section.html" with includes=includes excludes=excludes %}
         </div>
       </div>
-    </div>
-  </div>
-            {% include 'booking_form.html' %}
-
 </section>
+    {% include 'booking_form.html' %}
 {% endblock %}
