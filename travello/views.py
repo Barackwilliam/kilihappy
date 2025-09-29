@@ -40,7 +40,9 @@ def index(request):
     teams = Team.objects.all()[:3]
     testimonial = User_Testimonial.objects.all()[:3]
     # all_safaries = Safari.objects.all()
-    tours = Tour.objects.all()[:4]
+    # tours = Tour.objects.all()[:4]
+    tours = Tour.objects.all()[:4][::-1]
+
 
 
     gallery = Gallery.objects.all()

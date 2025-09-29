@@ -977,50 +977,6 @@ p {
     </h1>
 
 </div>
-<br>
-    <div class="container">
-<div class="row g-4 justify-content-center">
-    {% for i in tours %}
-    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="card bg-transparent text-white border-0 shadow-lg overflow-hidden" style="border-radius: 20px;">
-            <div class="card-img position-relative" style="height: 350px; background: url('{{ i.featured_image }}') center center/cover no-repeat;">
-                <div class="position-absolute top-0 start-0 w-100 h-100" style="background:  rgba(7, 7, 7, 0.342);"></div>
-                <div class="position-absolute bottom-0 start-0 p-4">
-                    <h4 class="fw-bold text-warning mb-1">{{ i.title }}</h4>
-                    <small class="text-light">{{ i.days }} Days {{ i.safari_type }}</small>
-                </div>
-            </div>
-
-            <div class="card-body bg-dark bg-opacity-75 p-4">
-                <p class="mb-2 text-white-50">Starting From</p>
-                <h3 class="text-warning fw-bold mb-2">$ {{ i.price }}</h3>
-                <small class="text-white">Per person</small>
-                <div class="mt-3 text-center">
-                    <a href="{% url 'tour_detail' i.id %}" class="btn btn-warning text-dark fw-semibold rounded-pill px-4 py-2 shadow"onclick="showLoading(event)">
-                        View Details
-                    </a>
-
-
-
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-    <div class="text-center mt-4">
-              <a href="{% url 'tour_list' %}" class="btn btn-success btn-lg rounded-pill px-5"onclick="showLoading(event)">
-                Explore More Packages
-              </a>
-      </div>
-      <br>
-</div>
-   
-</div>
-
-
-
-
-
 
 
 <!-- Package Start -->
@@ -1083,7 +1039,53 @@ p {
     TREKKING ADVENTURE PACKAGES
     </h2>
     <p class="fs-5 text-center display-4 text-white mb-5">Our Top Tanzania Trekking Packages</p>
-</div> <br>
+</div>
+
+
+<br>
+    <div class="container">
+<div class="row g-4 justify-content-center">
+    {% for i in tours %}
+    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="card bg-transparent text-white border-0 shadow-lg overflow-hidden" style="border-radius: 20px;">
+            <div class="card-img position-relative" style="height: 350px; background: url('{{ i.featured_image }}') center center/cover no-repeat;">
+                <div class="position-absolute top-0 start-0 w-100 h-100" style="background:  rgba(7, 7, 7, 0.342);"></div>
+                <div class="position-absolute bottom-0 start-0 p-4">
+                    <h4 class="fw-bold text-warning mb-1">{{ i.title }}</h4>
+                    <small class="text-light">{{ i.days }} Days {{ i.safari_type }}</small>
+                </div>
+            </div>
+
+            <div class="card-body bg-dark bg-opacity-75 p-4">
+                <p class="mb-2 text-white-50">Starting From</p>
+                <h3 class="text-warning fw-bold mb-2">$ {{ i.price }}</h3>
+                <small class="text-white">Per person</small>
+                <div class="mt-3 text-center">
+                    <a href="{% url 'tour_detail' i.id %}" class="btn btn-warning text-dark fw-semibold rounded-pill px-4 py-2 shadow"onclick="showLoading(event)">
+                        View Details
+                    </a>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="text-center mt-4">
+              <a href="{% url 'tour_list' %}" class="btn btn-success btn-lg rounded-pill px-5"onclick="showLoading(event)">
+                Explore More Packages
+              </a>
+      </div>
+      <br>
+</div>
+   
+</div>
+
+<br>
+
+
+
 
 
 
