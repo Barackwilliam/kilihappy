@@ -40,7 +40,7 @@ def index(request):
     teams = Team.objects.all()[:3]
     testimonial = User_Testimonial.objects.all()[:3]
     # all_safaries = Safari.objects.all()
-    tours = Tour.objects.all()
+    tours = Tour.objects.all()[:4]
 
 
     gallery = Gallery.objects.all()
@@ -343,7 +343,7 @@ def tour_list(request):
     # Collect unique tour types for dropdown
     tour_types = Tour.objects.order_by('tour_type').values_list('tour_type', flat=True).distinct()
 
-    return render(request, 'tour_list.html', {'qn':qn,'compan':compan,"safari_list": safari_list,'tours': tours, 'tour_types': tour_types,'safari':safari,'packages': all_packages,})
+    return render(request, 'tour_list.html', {'qn':qn,'compan':compan,"safari_list": safari_list,'tours': tours, 'tour_types': tour_types})
 
 def safari_list(request):
     qn = FAQ.objects.all()

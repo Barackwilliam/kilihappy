@@ -303,7 +303,6 @@ class Tour(models.Model):
     def excludes(self):
         return self.package_items.filter(item_type=TravelPackageItem.EXCLUDE)
 
-
      # Kwa Open Graph preview
     def get_og_image_url(self):
         return f"https://ucarecdn.com/{self.featured_image}/-/resize/1200x630/-/format/auto/"
