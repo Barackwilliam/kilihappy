@@ -43,6 +43,8 @@
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
   <!-- Template Stylesheet -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
+
   <style>
     /* Premium Navigation Bar Styles - Enhanced Horizontal Layout for Large Screens */
     .premium-navbar {
@@ -726,6 +728,56 @@
     height: auto;      /* Keeps aspect ratio */
     max-width: 100%;   /* Makes it responsive on small screens */
 }
+
+.menu-btn {
+  position: relative;
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #ff8c00, #ff4b2b);
+  border: none;
+  border-radius: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  font-family: 'Merienda', cursive;
+  box-shadow: 0 4px 15px rgba(255, 72, 0, 0.4);
+}
+
+/* glowing animated border */
+.menu-btn::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  background: linear-gradient(45deg, #ff0080, #ff8c00, #40c9ff, #ff8c00);
+  border-radius: 16px;
+  z-index: -1;
+  background-size: 400%;
+  animation: glowBorder 5s linear infinite;
+}
+
+@keyframes glowBorder {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+.menu-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 8px 25px rgba(255, 72, 0, 0.6);
+}
+
+.menu-btn:active {
+  transform: scale(0.95);
+}
+
+
     </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -772,13 +824,19 @@
           <span>{{i.company_name}}</span>
           {% empty %}
         <img src="{% static 'img/logo.jpg' %}" alt="Logo" class="logo-img">
-          <span>Kilihappy Tanzania Adventures</span>
+          <h1 style="font-family: 'Merienda';" class="display-3">Kilihappy</h1>
+
           {% endfor %}
         </a>
   
-        <button class="navbar-toggler d-lg-none me-2" type="button" onclick="toggleSidebar()">
+        <!-- <button class="navbar-toggler d-lg-none me-2" type="button" onclick="toggleSidebar()">
           <i class="fas fa-bars text-warning"></i>
-        </button>
+        </button> -->
+      <button class="navbar-toggler d-lg-none me-2 menu-btn" type="button" onclick="toggleSidebar()">
+  MENU
+</button>
+
+
         <!-- Full Navbar for Large Screens -->
         <div class="navbar-collapse collapse d-none d-lg-flex justify-content-center flex-grow-1" id="navbarNav">
           <ul class="navbar-nav mx-auto">
@@ -850,7 +908,7 @@
         {% empty %}
         <img src="{% static 'img/logo.jpg' %}" alt="Logo">
         {% endfor %}
-        <h4>Kilihappy</h4>
+        <h4 class="display-1">Kilihappy</h4>
       </div>
       <i class="fas fa-times close-sidebar" onclick="toggleSidebar()"></i>
     </div>
