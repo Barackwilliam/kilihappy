@@ -9,24 +9,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- SEO Basics -->
+  <!-- ✅ SEO Basics -->
   <meta name="description" content="Embark on thrilling journeys, discover hidden gems, and create unforgettable memories in every corner of Tanzania and beyond.">
   <meta name="keywords" content="Kilihappy Tanzania Adventures, Tanzania adventures, safari, hiking, Kilimanjaro, Serengeti, Zanzibar, travel Africa">
   <meta name="author" content="Kilihappy Tanzania Adventures">
   <meta name="robots" content="index, follow">
-  <!-- Open Graph Tags -->
+  <!-- ✅ Open Graph Tags (for Facebook, WhatsApp, LinkedIn, etc.) -->
   <meta property="og:title" content="Kilihappy Tanzania Adventures" />
   <meta property="og:description" content="Embark on thrilling journeys, discover hidden gems, and create unforgettable memories in every corner of Tanzania and beyond." />
   <meta property="og:image" content="https://kilihappytanzaniaadventures.com/static/img/logo.jpg" />
   <meta property="og:image:alt" content="Kilihappy Tanzania Adventures Logo" />
   <meta property="og:url" content="https://kilihappytanzaniaadventures.com/" />
   <meta property="og:type" content="website" />
-  <!-- Twitter Card -->
+  <!-- ✅ Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Kilihappy Tanzania Adventures" />
   <meta name="twitter:description" content="Embark on thrilling journeys, discover hidden gems, and create unforgettable memories in every corner of Tanzania and beyond." />
   <meta name="twitter:image" content="https://kilihappytanzaniaadventures.com/static/img/logo.jpg" />
-  <!-- Favicon -->
+  <!-- ✅ Favicon -->
   <link href="{% static 'img/favicon.ico' %}" rel="icon">
   <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,10 +44,9 @@
   <!-- Template Stylesheet -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* Premium Navigation Bar Styles */
+    /* Premium Navigation Bar Styles - Enhanced Horizontal Layout for Large Screens */
     .premium-navbar {
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -82,6 +81,7 @@
     .navbar-brand:hover img {
       transform: scale(1.1);
     }
+    /* Ensure Horizontal Layout */
     .navbar-nav {
       display: flex !important;
       flex-direction: row !important;
@@ -102,13 +102,14 @@
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(5px);
       border: 1px solid rgba(255, 184, 28, 0.2);
-      box-shadow: 0 0 10px rgba(255, 184, 28, 0.1);
+      box-shadow: 0 0 10px rgba(255, 184, 28, 0.1); /* Subtle base glow */
     }
     .nav-link:hover, .nav-link.active {
       color: #FFB81C !important;
       background: linear-gradient(135deg, rgba(255, 184, 28, 0.2), rgba(255, 158, 0, 0.2));
       transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 0 30px rgba(255, 184, 28, 0.6), 0 4px 15px rgba(255, 184, 28, 0.3);
+      box-shadow: 0 0 30px rgba(255, 184, 28, 0.6), /* Enhanced glow on hover */
+                  0 4px 15px rgba(255, 184, 28, 0.3);
       animation: glowPulse 1.5s infinite alternate;
     }
     .nav-link::after {
@@ -172,11 +173,12 @@
       transform: translateY(-2px) scale(1.05);
       box-shadow: 0 6px 20px rgba(255, 184, 28, 0.4);
     }
+    /* Attractive Horizontal Dotted Line at the End of Navbar */
     .navbar-decorator {
       position: absolute;
       right: 0;
       bottom: 0;
-      left: 50%;
+      left: 50%; /* Start from middle to end */
       height: 3px;
       background: repeating-linear-gradient(
         to right,
@@ -202,68 +204,12 @@
         box-shadow: 0 0 20px rgba(255, 184, 28, 0.8);
       }
     }
-    /* Enhanced Menu Button Styles */
-    .menu-btn {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 20px;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      background: linear-gradient(135deg, #ff8c00, #ff4b2b);
-      border: none;
-      border-radius: 30px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      overflow: hidden;
-      transition: all 0.4s ease;
-      font-family: 'Merienda', cursive;
-      box-shadow: 0 4px 15px rgba(255, 72, 0, 0.4);
-      z-index: 1;
-    }
-    .menu-btn::before {
-      content: "";
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      width: calc(100% + 4px);
-      height: calc(100% + 4px);
-      background: linear-gradient(45deg, #ff0080, #ff8c00, #40c9ff, #ff8c00);
-      border-radius: 32px;
-      z-index: -1;
-      background-size: 400%;
-      animation: glowBorder 5s linear infinite;
-    }
-    @keyframes glowBorder {
-      0% { background-position: 0 0; }
-      50% { background-position: 400% 0; }
-      100% { background-position: 0 0; }
-    }
-    .menu-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 25px rgba(255, 72, 0, 0.6);
-      background: linear-gradient(135deg, #ff4b2b, #ff8c00);
-    }
-    .menu-btn:active {
-      transform: scale(0.95);
-    }
-    .menu-btn i {
-      margin-right: 8px;
-      font-size: 1.2rem;
-      transition: transform 0.3s ease;
-    }
-    .menu-btn:hover i {
-      transform: rotate(20deg);
-    }
-    /* Enhanced Sidebar Styles */
+    /* Enhanced Sidebar Styles - More Attractive */
     .sidebar {
       position: fixed;
       top: 0;
-      left: -100%;
-      width: 80vw;
-      max-width: 300px;
+      left: -300px;
+      width: 300px;
       height: 100vh;
       background: linear-gradient(180deg, #1a1a2e 0%, #16213e 70%, #0f3460 100%);
       transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -378,6 +324,7 @@
       color: #FFB81C;
       transform: scale(1.1);
     }
+    /* Submenu Styles */
     .sidebar-submenu {
       list-style: none;
       padding: 0;
@@ -433,14 +380,15 @@
       opacity: 1;
       visibility: visible;
     }
+    /* Main Content Wrapper */
     .main-wrapper {
       transition: margin-left 0.3s ease;
       min-height: 100vh;
     }
     .main-wrapper.shifted {
-      margin-left: 80vw;
+      margin-left: 300px;
     }
-    /* Other Existing Styles (Preserved) */
+    /* Existing Styles (Preserved and Adjusted) */
     .section-head {
       margin-bottom: 1.5rem;
       text-align: center;
@@ -485,6 +433,7 @@
       position: relative;
       z-index: 1;
     }
+    /* subtle glow behind the lines */
     .about-label .line::before {
       content: "";
       position: absolute;
@@ -494,6 +443,7 @@
       background: inherit;
       mix-blend-mode: screen;
     }
+    /* animation to vary thickness slightly */
     @keyframes pulse-width {
       0% { transform: scaleX(1); }
       50% { transform: scaleX(1.05); }
@@ -514,6 +464,7 @@
     .card-dest:hover img {
       transform: scale(1.04);
     }
+    /* Badges */
     .badge-offer, .badge-scenic {
       position: absolute;
       top: 12px;
@@ -532,13 +483,14 @@
       right: 12px;
       background: #1d8cf8;
     }
+    /* Centered animated button overlay */
     .overlay-center {
       position: absolute;
       inset: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      pointer-events: none;
+      pointer-events: none; /* allow button to get pointer */
     }
     .animated-view-btn {
       position: relative;
@@ -576,9 +528,19 @@
       transform: translateY(-3px) scale(1.02);
       box-shadow: 0 18px 40px -5px rgba(255, 184, 28, 0.8);
     }
+    /* Subtle glowing pulse behind button */
+    @keyframes glowPulse {
+      0%, 100% {
+        box-shadow: 0 0 15px 0 rgba(255, 184, 28, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 30px 6px rgba(255, 184, 28, 0.2);
+      }
+    }
     .animated-view-btn {
       animation: glowPulse 3s infinite alternate;
     }
+    /* Location tag bottom-right */
     .location-tag {
       position: absolute;
       bottom: 12px;
@@ -597,6 +559,7 @@
       background-repeat: no-repeat;
       height: 100vh;
     }
+    /* Overlay to make text stand out */
     .hero-overlay {
       position: absolute;
       top: 0;
@@ -606,6 +569,7 @@
       background: rgba(0, 0, 0, 0.4);
       z-index: -1;
     }
+    /* Title Styling */
     .hero-bg h1 {
       font-size: 3.5rem;
       font-weight: 700;
@@ -615,6 +579,7 @@
       line-height: 1.2;
       animation: fadeInUp 2s ease-out;
     }
+    /* Subtitle Styling */
     .hero-bg p {
       font-size: 1.5rem;
       font-weight: 300;
@@ -623,6 +588,7 @@
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
       animation: fadeInUp 3s ease-out;
     }
+    /* Button Styling */
     .btn-warning {
       background-color: #FFB81C;
       color: white;
@@ -638,15 +604,18 @@
       background-color: #FF9E00;
       transform: scale(1.1);
     }
+    /* Pulse animation for buttons */
     @keyframes pulse {
       0% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.1); opacity: 0.9; }
       100% { transform: scale(1); opacity: 1; }
     }
+    /* FadeIn animation for elements */
     @keyframes fadeInUp {
       0% { opacity: 0; transform: translateY(50px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+    /* Floating WhatsApp Button */
     .whatsapp-icon {
       position: fixed;
       bottom: 20px;
@@ -659,6 +628,7 @@
       width: 50px;
       height: 50px;
     }
+    /* Chat Popup Box */
     .whatsapp-chat-popup {
       position: fixed;
       bottom: 80px;
@@ -712,6 +682,7 @@
     .chat-button:hover {
       background-color: #1ebd5b;
     }
+    /* Animations */
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
       40% { transform: translateY(-10px); }
@@ -721,6 +692,7 @@
       from { opacity: 0; transform: scale(0.9); }
       to { opacity: 1; transform: scale(1); }
     }
+    /* Top Bar Adjustment */
     .top-bar {
       background: #1a1a2e;
       color: #ffffff;
@@ -729,9 +701,7 @@
     /* Responsive Adjustments */
     @media (max-width: 991px) {
       .sidebar {
-        left: -100%;
-        width: 80vw;
-        max-width: 300px;
+        left: -300px;
       }
       .main-wrapper.shifted {
         margin-left: 0;
@@ -741,18 +711,6 @@
       }
       .navbar-decorator {
         display: none;
-      }
-      .menu-btn {
-        padding: 8px 16px;
-        font-size: 0.9rem;
-        border-radius: 25px;
-      }
-      .navbar-brand {
-        font-size: 1.5rem;
-      }
-      .navbar-brand img {
-        width: 40px;
-        height: 40px;
       }
     }
     @media (min-width: 992px) {
@@ -764,35 +722,64 @@
         display: flex !important;
         flex-direction: row !important;
       }
-      .menu-btn {
-        display: none;
-      }
     }
-    @media (max-width: 576px) {
-      .sidebar {
-        width: 90vw;
-      }
-      .hero-bg h1 {
-        font-size: 2.5rem;
-      }
-      .hero-bg p {
-        font-size: 1.2rem;
-      }
-      .btn-warning {
-        font-size: 1rem;
-        padding: 10px 20px;
-      }
-      .whatsapp-chat-popup {
-        width: 90%;
-        left: 5%;
-      }
-    }
-    .logo-img {
-      width: 50px;
-      height: auto;
-      max-width: 100%;
-    }
-  </style>
+      .logo-img {
+    width: 3080px;      /* Adjust width as needed */
+    height: auto;      /* Keeps aspect ratio */
+    max-width: 100%;   /* Makes it responsive on small screens */
+}
+
+.menu-btn {
+  position: relative;
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #ff8c00, #ff4b2b);
+  border: none;
+  border-radius: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  font-family: 'Merienda', cursive;
+  box-shadow: 0 4px 15px rgba(255, 72, 0, 0.4);
+}
+
+/* glowing animated border */
+.menu-btn::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  background: linear-gradient(45deg, #ff0080, #ff8c00, #40c9ff, #ff8c00);
+  border-radius: 16px;
+  z-index: -1;
+  background-size: 400%;
+  animation: glowBorder 5s linear infinite;
+}
+
+@keyframes glowBorder {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+.menu-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 8px 25px rgba(255, 72, 0, 0.6);
+}
+
+.menu-btn:active {
+  transform: scale(0.95);
+}
+
+
+    </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <!-- Spinner -->
@@ -827,7 +814,7 @@
       </div>
     </div>
   </div>
-  <!-- Premium Navigation Bar -->
+  <!-- Premium Navigation Bar - Full Horizontal Menu for Large Screens -->
   <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative">
     <div class="container">
       <div class="d-flex align-items-center justify-content-between w-100">
@@ -836,13 +823,20 @@
           <img src="{{i.image}}" alt="Logo" class="logo-img">
           <span>{{i.company_name}}</span>
           {% empty %}
-          <img src="{% static 'img/logo.jpg' %}" alt="Logo" class="logo-img">
-          <h2 style="font-family: 'Merienda';" class="display-4">Kilihappy</h2>
-          {% endfor %}
-        </a>
-        <button class="navbar-toggler d-lg-none me-2 menu-btn" type="button" onclick="toggleSidebar()">
-          <i class="fas fa-bars"></i> MENU
-        </button>
+        <img src="{% static 'img/logo.jpg' %}" alt="Logo" class="logo-img">
+
+          <h1 style="font-family: 'Merienda';" class="display-3">Kilihappy</h1>
+              {% endfor %}
+    </a>
+        <!-- <button class="navbar-toggler d-lg-none me-2" type="button" onclick="toggleSidebar()">
+          <i class="fas fa-bars text-warning"></i>
+        </button> -->
+      <button class="navbar-toggler d-lg-none me-2 menu-btn" type="button" onclick="toggleSidebar()">
+  MENU
+</button>
+
+
+        <!-- Full Navbar for Large Screens -->
         <div class="navbar-collapse collapse d-none d-lg-flex justify-content-center flex-grow-1" id="navbarNav">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
@@ -894,8 +888,10 @@
               </ul>
             </li>
           </ul>
+          <!-- Attractive Horizontal Dotted Line Decorator -->
           <div class="navbar-decorator d-none d-lg-block"></div>
         </div>
+        <!-- Book Button for Large Screens -->
         <div class="d-none d-lg-flex">
           <a href="{% url 'contact' %}" class="book-btn ms-3" onclick="showLoading(event)">Book Now</a>
         </div>
@@ -1021,7 +1017,7 @@
         <div class="copyright">
           <div class="row">
             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0" style="text-decoration: none">
-              &copy; <a style="text-decoration: none;" class="border-bottom" href="https://www.kilihappytanzaniaadventures.com">Kilihappy</a>, All Right Reserved.
+              &copy; <a style="text-decoration: none;" class="border-bottom" href="https://www.kilihappytanzaniaadventures.com.com">Kilihappy</a>, All Right Reserved.
               2025 <a class="border-bottom" href=""></a>
             </div>
             <div class="col-md-6 text-center text-md-end">
@@ -1037,7 +1033,7 @@
       </div>
     </div>
   </div>
-  <!-- JavaScript -->
+  <!-- JavaScript tracker -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       trackVisit();
@@ -1053,6 +1049,7 @@
           trackActivity('scroll', { position: window.scrollY });
           this.scrollThrottle = setTimeout(() => { this.scrollThrottle = null; }, 1000);
         }
+        // Navbar scroll effect
         const navbar = document.querySelector('.premium-navbar');
         if (window.scrollY > 50) {
           navbar.classList.add('scrolled');
@@ -1113,6 +1110,7 @@
       }
       return cookieValue;
     }
+    // Sidebar Toggle
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
       const overlay = document.getElementById('sidebarOverlay');
@@ -1121,11 +1119,13 @@
       overlay.classList.toggle('active');
       wrapper.classList.toggle('shifted');
     }
+    // Submenu Toggle for Sidebar
     function toggleSubmenu(element) {
       const li = element.parentElement;
       li.classList.toggle('open');
       event.preventDefault();
     }
+    // Close sidebar on escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         toggleSidebar();
@@ -1157,6 +1157,7 @@
       <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" /> WhatsApp
     </a>
   </div>
+  <!-- Floating Button -->
   <div class="whatsapp-icon" onclick="document.getElementById('whatsapp-chat').classList.toggle('open')">
     <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" />
   </div>
