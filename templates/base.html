@@ -47,84 +47,40 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* Premium Navigation Bar Styles */
     .premium-navbar {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 1030;
-      transition: all 0.3s ease;
-    }
-    .premium-navbar.scrolled {
-      padding: 0.5rem 0;
-      background: rgba(26, 26, 46, 0.95);
-      backdrop-filter: blur(10px);
-    }
-    .navbar-brand {
-      font-family: 'Merienda', cursive;
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #FFB81C !important;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-    }
-    .navbar-brand img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: 3px solid #FFB81C;
-      margin-right: 0.5rem;
-      transition: transform 0.3s ease;
-    }
-    .navbar-brand:hover img {
-      transform: scale(1.1);
-    }
-    .navbar-nav {
-      display: flex !important;
-      flex-direction: row !important;
-      flex-wrap: nowrap !important;
-      gap: 0.5rem;
-      align-items: center;
-      justify-content: center;
-    }
-    .nav-link {
-      color: #ffffff !important;
-      font-weight: 600;
-      padding: 0.75rem 1.25rem !important;
-      transition: all 0.3s ease;
-      position: relative;
-      border-radius: 8px;
-      margin: 0 0.25rem;
-      white-space: nowrap;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 184, 28, 0.2);
-      box-shadow: 0 0 10px rgba(255, 184, 28, 0.1);
-    }
-    .nav-link:hover, .nav-link.active {
-      color: #FFB81C !important;
-      background: linear-gradient(135deg, rgba(255, 184, 28, 0.2), rgba(255, 158, 0, 0.2));
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 0 30px rgba(255, 184, 28, 0.6), 0 4px 15px rgba(255, 184, 28, 0.3);
-      animation: glowPulse 1.5s infinite alternate;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: #FFB81C;
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
-    }
-    .nav-link:hover::after, .nav-link.active::after {
-      width: 80%;
-    }
+  background: #1a2a44; /* Rangia ya bluu ya kina */
+  color: #fff;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
+.navbar-brand img {
+  width: 50px;
+  height: auto;
+  border-radius: 0;
+  border: none;
+}
+
+.navbar-brand span {
+  color: #ffcc00; /* Rangi ya dhahabu kwa "Great Time" */
+}
+
+.dropdown-menu {
+  background: #1a2a44;
+  border: none;
+  color: #fff;
+}
+
+.dropdown-item {
+  color: #fff;
+}
+
+.dropdown-item:hover {
+  background: #2a4058;
+  color: #ffcc00;
+}
     @keyframes glowPulse {
       0% { box-shadow: 0 0 20px rgba(255, 184, 28, 0.4), 0 4px 15px rgba(255, 184, 28, 0.3); }
       100% { box-shadow: 0 0 40px rgba(255, 184, 28, 0.8), 0 4px 15px rgba(255, 184, 28, 0.3); }
@@ -827,81 +783,53 @@
       </div>
     </div>
   </div>
-  <!-- Premium Navigation Bar -->
-  <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative">
-    <div class="container">
-      <div class="d-flex align-items-center justify-content-between w-100">
-        <a href="{% url 'admin:index' %}" class="navbar-brand">
-          {% for i in compan %}
-          <img src="{{i.image}}" alt="Logo" class="logo-img">
-          <span>{{i.company_name}}</span>
-          {% empty %}
-          <img src="{% static 'img/logo.jpg' %}" alt="Logo" class="logo-img">
-          <h2 style="font-family: 'Merienda';" class="display-4">Kilihappy</h2>
-          {% endfor %}
-        </a>
-        <button class="navbar-toggler d-lg-none me-2 menu-btn" type="button" onclick="toggleSidebar()">
-          <i class="fas fa-bars"></i> MENU
-        </button>
-        <div class="navbar-collapse collapse d-none d-lg-flex justify-content-center flex-grow-1" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a href="{% url 'index' %}" class="nav-link active" onclick="showLoading(event)">Home</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'about' %}" class="nav-link" onclick="showLoading(event)">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'service' %}" class="nav-link" onclick="showLoading(event)">Services</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Safari</a>
-              <ul class="dropdown-menu">
-                {% for s in safari_list %}
-                <li><a href="{% url 'safari_detail' s.id %}" class="dropdown-item" onclick="showLoading(event)">{{ s.title }}</a></li>
-                {% empty %}
-                <li><span class="dropdown-item text-muted">No Safari available</span></li>
-                {% endfor %}
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Trekking</a>
-              <ul class="dropdown-menu">
-                {% for tour in tours %}
-                <li><a href="{% url 'tour_detail' tour.id %}" class="dropdown-item" onclick="showLoading(event)">{{ tour.title }}</a></li>
-                {% empty %}
-                <li><span class="dropdown-item text-muted">No tours available</span></li>
-                {% endfor %}
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Day Trip</a>
-              <ul class="dropdown-menu">
-                {% for d in trips_list %}
-                <li><a href="{% url 'Trip_detail' d.id %}" class="dropdown-item" onclick="showLoading(event)">{{ d.title }}</a></li>
-                {% empty %}
-                <li><span class="dropdown-item text-muted">No Day Trip available</span></li>
-                {% endfor %}
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Others</a>
-              <ul class="dropdown-menu">
-                <li><a href="{% url 'destinations_list' %}" class="dropdown-item" onclick="showLoading(event)">Destinations</a></li>
-                <li><a href="{% url 'testimonial' %}" class="dropdown-item" onclick="showLoading(event)">Testimonials</a></li>
-                <li><a href="{% url 'contact' %}" class="dropdown-item" onclick="showLoading(event)">Contact</a></li>
-                <li><a href="{% url 'questions' %}" class="dropdown-item" onclick="showLoading(event)">FAQ</a></li>
-              </ul>
-            </li>
-          </ul>
-          <div class="navbar-decorator d-none d-lg-block"></div>
-        </div>
-        <div class="d-none d-lg-flex">
-          <a href="{% url 'contact' %}" class="book-btn ms-3" onclick="showLoading(event)">Book Now</a>
-        </div>
+
+   <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative" style="background: #11274b; color: #fff;">
+  <div class="container">
+     <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone te"></i>: +255658571653</a>
+    <div class="d-flex align-items-center justify-content-between w-100">
+      <div class="d-flex align-items-center">
+     <a href="mailto:info@kilihappytanzaniaadventures.com" class="text-white me-3"><i class="fas fa-envelope"></i>: info@kilihappytanzaniaadventures.com</a>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
+
+
+ <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative" style="background: #1a2a44; color: #fff;">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between w-100">
+      <a href="{% url 'admin:index' %}" class="navbar-brand d-flex align-items-center">
+    <img src="{% static 'img/logo.jpg' %}" alt="Logo"  class="logo-img me-2" style="width: 70px; height: auto;">
+        <div>
+          <span style="font-size: 1.5rem; font-weight: bold; color: #ffcc00; font-family: 'Merienda', cursive;">Kilihappy</span>
+          <p style="font-size: 1rem; margin: 0; color: #ffcc00;font-family: 'Merienda', cursive;">Tanzania Adventures</p>
+        </div>
+      </a>
+      <div class="d-flex align-items-center">
+        <!-- <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone"></i> +255 760 389 236</a><br>
+        <a href="mailto:info@greattimeexp" class="text-white me-3"><i class="fas fa-envelope"></i> info@greattimeexp</a> -->
+        <div class="dropdown">
+          <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="me-1"> EN
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+            <li><a class="dropdown-item text-light" href="#">English</a></li>
+            <li><a class="dropdown-item text-light" href="#">Swahili</a></li>
+          </ul>
+        </div>
+        <button class="navbar-toggler d-lg-none ms-2 bg-warning text-dark border-1 shadow-lg rounded-0 p-1" 
+        type="button" 
+        onclick="toggleSidebar()" 
+        style="font-size: 1.6rem; transition: 0.3s ease;">
+          <i class="fas fa-bars"></i>
+        <h3 class="p-1 shadow-lg rounded-1">Menu</h3> </button> 
+      </div>
+    </div>
+  </div>
+</nav>
+
+
   <!-- Enhanced Sidebar for Mobile -->
   <div class="sidebar" id="sidebar">
     <div class="sidebar-header">
@@ -911,7 +839,8 @@
         {% empty %}
         <img src="{% static 'img/logo.jpg' %}" alt="Logo">
         {% endfor %}
-        <h4 class="display-1">Kilihappy</h4>
+        <h4 class="display-1">Kilihappy <small>Tanzania Adventures</small></h4>
+       
       </div>
       <i class="fas fa-times close-sidebar" onclick="toggleSidebar()"></i>
     </div>
