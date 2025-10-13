@@ -792,10 +792,10 @@
    <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative" style="background: #11274b; color: #fff;">
   <div class="container">
      <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone te"></i>: +255658571653</a>
-    <div class="d-flex align-items-center justify-content-between w-100">
-      <div class="d-flex align-items-center">
+    <div class="d-flex justify-content-between w-100">
+      <div class="d-flex ">
      <a href="mailto:info@kilihappytanzaniaadventures.com" class="text-white me-3"><i class="fas fa-envelope"></i>: info@kilihappytanzaniaadventures.com</a>
-      </div>
+    </div>
     </div>
   </div>
 </nav>
@@ -803,7 +803,8 @@
 
  <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative" style="background: #1a2a44; color: #fff;">
   <div class="container">
-    <div class="d-flex align-items-center justify-content-between w-100">
+    <!-- <div class="d-flex align-items-center justify-content-between w-100"> -->
+    <div class="d-flex justify-content-between w-100">
       <a href="{% url 'admin:index' %}" class="navbar-brand d-flex align-items-center">
     <img src="{% static 'img/logo.jpg' %}" alt="Logo"  class="logo-img me-2" style="width: 50px; height: auto;">
         <div>
@@ -811,9 +812,7 @@
           <p style="font-size: 1rem; margin: 0; color: #ffcc00;font-family: 'Merienda', cursive;">Tanzania Adventures</p>
         </div>
       </a>
-      <div class="d-flex align-items-center">
-        <!-- <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone"></i> +255 760 389 236</a><br>
-        <a href="mailto:info@greattimeexp" class="text-white me-3"><i class="fas fa-envelope"></i> info@greattimeexp</a> -->
+      <div class="d-flex">
         <div class="dropdown">
           <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://flagcdn.com/w20/gb.png" alt="English" class="me-1"> EN
@@ -825,12 +824,14 @@
             <li><a class="dropdown-item text-light" href="#">Canada</a></li>
           </ul>
         </div>
+        <!-- <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone"></i> +255 760 389 236</a><br>
+        <a href="mailto:info@greattimeexp" class="text-white me-3"><i class="fas fa-envelope"></i> info@greattimeexp</a> -->
         <button style="color: yellow;" class="navbar-toggler d-lg-none ms-2 border-1 shadow-lg rounded-0 p-1" 
         type="button" 
         onclick="toggleSidebar()" 
         style="font-size: 1.2rem; transition: 0.3s ease;">
           <i class="fas fa-bars"></i>
-        <!-- <h3 class="p-1 shadow-lg rounded-1">Menu</h3>  -->
+        <h3 class="p-1 shadow-lg rounded-1">Menu</h3> 
       </button> 
       </div>
     </div>
