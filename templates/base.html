@@ -950,6 +950,7 @@
           <li><a href="{% url 'testimonial' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-quote-left"></i>Testimonials</a></li>
           <li><a href="{% url 'contact' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-envelope"></i>Contact</a></li>
           <li><a href="{% url 'questions' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-question-circle"></i>FAQ</a></li>
+          <li><a href="{% url 'terms_and_conditions' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-question-circle"></i>terms & conditions</a></li>
         </ul>
       </li>
     </ul>
@@ -973,7 +974,7 @@
             <a class="btn btn-link" href="{% url 'destinations_list' %}" onclick="showLoading(event)">Our Destinations</a>
             <a class="btn btn-link" href="{% url 'team' %}" onclick="showLoading(event)">Our Travel Guides</a>
             <a class="btn btn-link" href="">Privacy Policy</a>
-            <a class="btn btn-link" href="">Terms & Condition</a>
+            <a class="btn btn-link" href="{% url 'terms_and_conditions' %}">Terms & Condition</a>
             <a class="btn btn-link" href="{% url 'questions' %}" onclick="showLoading(event)">FAQs & Help</a>
           </div>
           <div class="col-lg-3 col-md-6">
