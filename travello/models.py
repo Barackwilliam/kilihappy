@@ -809,3 +809,17 @@ class Headline(models.Model):
         return self.name_of_headline
 
 
+from django.utils import timezone
+from ckeditor.fields import RichTextField  # Import this
+
+class TermsAndConditions(models.Model):
+    """
+    Updated model with RichTextField for formatted content.
+    """
+    title = models.CharField(max_length=200, default="Terms and Conditions")
+    content = RichTextField()  # Use RichTextField instead of TextField for rich editing
+    last_updated = models.DateTimeField(default=timezone.now)
+    version = models.CharField(max_length=10, default="1.0")
+
+    def __str__(self):
+        return f"{self.title} - Version {self.version}"

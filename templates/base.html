@@ -344,7 +344,8 @@
       background: rgba(255, 184, 28, 0.05);
     }
     .sidebar-nav > li > a.dropdown-toggle {
-      justify-content: space-between;
+      position: relative;
+      padding-right: 3rem; /* Add space for the arrow */
     }
     .sidebar-nav > li > a.dropdown-toggle::after {
       content: '\f107';
@@ -352,21 +353,25 @@
       font-weight: 900;
       color: #ffffff;
       transition: transform 0.3s ease;
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
     }
     .sidebar-nav > li.open > a.dropdown-toggle::after {
-      transform: rotate(180deg);
+      transform: translateY(-50%) rotate(180deg);
       color: #FFB81C;
     }
     .sidebar-nav > li.open .sidebar-submenu {
       max-height: 500px;
     }
     .sidebar-submenu li a {
-      padding: 0.75rem 2.5rem;
+      padding: 0.75rem 1.5rem 0.75rem 3.5rem; /* Adjusted left padding for subitems */
       font-size: 0.95rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     }
     .sidebar-submenu li a:hover {
-      padding-left: 2.5rem;
+      padding-left: 3.5rem;
     }
     .sidebar-submenu li a i {
       margin-right: 0.75rem;
@@ -439,7 +444,7 @@
     .about-label .text {
       padding: 0 12px;
       position: relative;
-     MENUnndex: 1;
+      z-index: 1;
     }
     .about-label .line::before {
       content: "";
@@ -783,76 +788,44 @@
       </div>
     </div>
   </div>
-  <!-- Premium Navigation Bar -->
-  <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative">
-    <div class="container">
-      <div class="d-flex align-items-center justify-content-between w-100">
-        <a href="{% url 'admin:index' %}" class="navbar-brand">
-          {% for i in compan %}
-          <img src="{{i.image}}" alt="Logo" class="logo-img">
-          <span>{{i.company_name}}</span>
-          {% empty %}
-          <img src="{% static 'img/logo.jpg' %}" alt="Logo" class="logo-img">
-          <h2 style="font-family: 'Merienda';" class="display-4">Kilihappy</h2>
-          {% endfor %}
-        </a>
-        <button class="navbar-toggler d-lg-none me-2 menu-btn" type="button" onclick="toggleSidebar()">
-          <i class="fas fa-bars"></i> MENU
-        </button>
-        <div class="navbar-collapse collapse d-none d-lg-flex justify-content-center flex-grow-1" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a href="{% url 'index' %}" class="nav-link active" onclick="showLoading(event)">Home</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'about' %}" class="nav-link" onclick="showLoading(event)">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'service' %}" class="nav-link" onclick="showLoading(event)">Services</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Safari</a>
-              <ul class="dropdown-menu">
-                {% for s in safari_list %}
-                <li><a href="{% url 'safari_detail' s.id %}" class="dropdown-item" onclick="showLoading(event)">{{ s.title }}</a></li>
-                {% empty %}
-                <li><span class="dropdown-item text-muted">No Safari available</span></li>
-                {% endfor %}
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Trekking</a>
-              <ul class="dropdown-menu">
-                {% for tour in tours %}
-                <li><a href="{% url 'tour_detail' tour.id %}" class="dropdown-item" onclick="showLoading(event)">{{ tour.title }}</a></li>
-                {% empty %}
-                <li><span class="dropdown-item text-muted">No tours available</span></li>
-                {% endfor %}
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Day Trip</a>
-              <ul class="dropdown-menu">
-                {% for d in trips_list %}
-                <li><a href="{% url 'Trip_detail' d.id %}" class="dropdown-item" onclick="showLoading(event)">{{ d.title }}</a></li>
-                {% empty %}
-                <li><span class="dropdown-item text-muted">No Day Trip available</span></li>
-                {% endfor %}
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Others</a>
-              <ul class="dropdown-menu">
-                <li><a href="{% url 'destinations_list' %}" class="dropdown-item" onclick="showLoading(event)">Destinations</a></li>
-                <li><a href="{% url 'testimonial' %}" class="dropdown-item" onclick="showLoading(event)">Testimonials</a></li>
-                <li><a href="{% url 'contact' %}" class="dropdown-item" onclick="showLoading(event)">Contact</a></li>
-                <li><a href="{% url 'questions' %}" class="dropdown-item" onclick="showLoading(event)">FAQ</a></li>
-              </ul>
-            </li>
-          </ul>
-          <div class="navbar-decorator d-none d-lg-block"></div>
+
+   <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative" style="background: #11274b; color: #fff;">
+  <div class="container">
+     <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone te"></i>: +255658571653</a>
+    <div class="d-flex align-items-center justify-content-between w-100">
+      <div class="d-flex align-items-center">
+     <a href="mailto:info@kilihappytanzaniaadventures.com" class="text-white me-3"><i class="fas fa-envelope"></i>: info@kilihappytanzaniaadventures.com</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+ <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative" style="background: #1a2a44; color: #fff;">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between w-100">
+      <a href="{% url 'admin:index' %}" class="navbar-brand d-flex align-items-center">
+    <img src="{% static 'img/logo.jpg' %}" alt="Logo"  class="logo-img me-2" style="width: 70px; height: auto;">
+        <div>
+          <span style="font-size: 1.5rem; font-weight: bold; color: #ffcc00; font-family: 'Merienda', cursive;">Kilihappy</span>
+          <p style="font-size: 1rem; margin: 0; color: #ffcc00;font-family: 'Merienda', cursive;">Tanzania Adventures</p>
         </div>
-        <button class="navbar-toggler d-lg-none ms-2 bg-warning text-dark border-1 shadow-lg rounded-0 p-1" 
+      </a>
+      <div class="d-flex align-items-center">
+        <!-- <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone"></i> +255 760 389 236</a><br>
+        <a href="mailto:info@greattimeexp" class="text-white me-3"><i class="fas fa-envelope"></i> info@greattimeexp</a> -->
+        <div class="dropdown">
+          <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="me-1"> EN
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+            <li><a class="dropdown-item text-light" href="#">English</a></li>
+            <li><a class="dropdown-item text-light" href="#">Swahili</a></li>
+            <li><a class="dropdown-item text-light" href="#">France</a></li>
+            <li><a class="dropdown-item text-light" href="#">Canada</a></li>
+          </ul>
+        </div>
+        <button style="color: yellow;" class="navbar-toggler d-lg-none ms-2 border-1 shadow-lg rounded-0 p-1" 
         type="button" 
         onclick="toggleSidebar()" 
         style="font-size: 1.6rem; transition: 0.3s ease;">
@@ -921,6 +894,8 @@
           <li><a href="{% url 'questions' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-question-circle"></i>FAQ</a></li>
         </ul>
       </li>
+        <li><a href="{% url 'terms_and_conditions' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-concierge-bell"></i>Terms & Conditions</a></li>
+
     </ul>
   </div>
   <!-- Sidebar Overlay -->
@@ -942,7 +917,7 @@
             <a class="btn btn-link" href="{% url 'destinations_list' %}" onclick="showLoading(event)">Our Destinations</a>
             <a class="btn btn-link" href="{% url 'team' %}" onclick="showLoading(event)">Our Travel Guides</a>
             <a class="btn btn-link" href="">Privacy Policy</a>
-            <a class="btn btn-link" href="">Terms & Condition</a>
+            <a class="btn btn-link" href="{% url 'terms_and_conditions' %}">Terms & Condition</a>
             <a class="btn btn-link" href="{% url 'questions' %}" onclick="showLoading(event)">FAQs & Help</a>
           </div>
           <div class="col-lg-3 col-md-6">

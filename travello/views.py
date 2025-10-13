@@ -1436,3 +1436,22 @@ def Momela_route_4(request):
 
 
     return render(request, "Momela_route_4.html",context) 
+
+
+
+# views.py (in your Django app, e.g., myapp/views.py)
+from django.views.generic import DetailView
+from .models import TermsAndConditions
+
+class TermsAndConditionsView(DetailView):
+    """
+    A view to display the Terms and Conditions page.
+    Assumes there's only one active instance; you can filter if needed.
+    """
+    model = TermsAndConditions
+    template_name = 'terms_and_conditions.html'
+    context_object_name = 'terms'
+
+    def get_object(self):
+        # Fetch the latest version; adjust as per your needs
+        return TermsAndConditions.objects.latest('last_updated')

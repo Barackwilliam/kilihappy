@@ -55,10 +55,25 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
        'cloudinary',
+       'ckeditor',
+    'ckeditor_uploader',
     'cloudinary_storage',
     "django_countries",
 
 ]
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',  # Full toolbar for rich formatting
+        'height': 400,
+        'width': '100%',
+        'extraPlugins': 'codesnippet',  # For code blocks if needed
+    },
+}
+
+# If using uploader:
+CKEDITOR_UPLOAD_PATH = 'uploads/'  # Folder for uploaded images/files
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

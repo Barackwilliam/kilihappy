@@ -1,6 +1,7 @@
 from  django.urls import path
 from . import views
 from .views import TrackVisitView,TrackActivityView,dashboard_view
+from .views import TermsAndConditionsView
 
 
 urlpatterns = [
@@ -9,6 +10,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('explore_zanzibar/', views.explore_zanzibar, name='explore_zanzibar'),
     path('zanzibar/<int:pk>/', views.Zanzibar_Tour, name='Zanzibar_Tour'),
+    path('terms-and-conditions/', TermsAndConditionsView.as_view(), name='terms_and_conditions'),
     
     path('serengeti_migration/', views.serengeti_migration, name='serengeti_migration'),
     path('serengeti/<int:pk>/', views.serengeti_Tour, name='serengeti_Tour'), 

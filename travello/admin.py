@@ -666,3 +666,22 @@ class HeadlineAdmin(admin.ModelAdmin):
     search_fields =  ('name_of_headline',)
 
 
+from django.contrib import admin
+from .models import TermsAndConditions
+
+@admin.register(TermsAndConditions)
+class TermsAndConditionsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'version', 'last_updated')
+    search_fields = ('title', 'content')
+    ordering = ('-last_updated',)
+    readonly_fields = ('last_updated',)
+
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'content', 'version')
+        }),
+        ('Metadata', {
+            'fields': ('last_updated',),
+            'classes': ('collapse',),
+        }),
+    )

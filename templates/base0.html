@@ -783,32 +783,47 @@
       </div>
     </div>
   </div>
+
+   <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative" style="background: #11274b; color: #fff;">
+  <div class="container">
+     <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone te"></i>: +255658571653</a>
+    <div class="d-flex align-items-center justify-content-between w-100">
+      <div class="d-flex align-items-center">
+     <a href="mailto:info@kilihappytanzaniaadventures.com" class="text-white me-3"><i class="fas fa-envelope"></i>: info@kilihappytanzaniaadventures.com</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
  <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative" style="background: #1a2a44; color: #fff;">
   <div class="container">
     <div class="d-flex align-items-center justify-content-between w-100">
       <a href="{% url 'admin:index' %}" class="navbar-brand d-flex align-items-center">
-        <img src="{% static 'img/logo.jpg' %}" alt="Logo" class="logo-img me-2">
+    <img src="{% static 'img/logo.jpg' %}" alt="Logo"  class="logo-img me-2" style="width: 70px; height: auto;">
         <div>
-          <span style="font-size: 1.5rem; font-weight: bold; color: #ffcc00;">Great Time</span>
-          <p style="font-size: 0.8rem; margin: 0; color: #fff;">Experience Adventures</p>
-          <small style="font-size: 0.7rem; color: #ddd;">Your Gateway to Wonders of Africa</small>
+          <span style="font-size: 1.5rem; font-weight: bold; color: #ffcc00; font-family: 'Merienda', cursive;">Kilihappy</span>
+          <p style="font-size: 1rem; margin: 0; color: #ffcc00;font-family: 'Merienda', cursive;">Tanzania Adventures</p>
         </div>
       </a>
       <div class="d-flex align-items-center">
-        <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone"></i> +255 760 389 236</a>
-        <a href="mailto:info@greattimeexp" class="text-white me-3"><i class="fas fa-envelope"></i> info@greattimeexp</a>
+        <!-- <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone"></i> +255 760 389 236</a><br>
+        <a href="mailto:info@greattimeexp" class="text-white me-3"><i class="fas fa-envelope"></i> info@greattimeexp</a> -->
         <div class="dropdown">
           <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://flagcdn.com/w20/gb.png" alt="English" class="me-1"> EN
           </button>
           <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-            <li><a class="dropdown-item" href="#">EN</a></li>
-            <li><a class="dropdown-item" href="#">SW</a></li>
+            <li><a class="dropdown-item text-light" href="#">English</a></li>
+            <li><a class="dropdown-item text-light" href="#">Swahili</a></li>
           </ul>
         </div>
-        <button class="navbar-toggler d-lg-none ms-2 menu-btn" type="button" onclick="toggleSidebar()">
-          <i class="fas fa-bars"></i> MENU
-        </button>
+        <button style="color: yellow;" class="navbar-toggler d-lg-none ms-2 border-1 shadow-lg rounded-0 p-1" 
+        type="button" 
+        onclick="toggleSidebar()" 
+        style="font-size: 1.6rem; transition: 0.3s ease;">
+          <i class="fas fa-bars"></i>
+        <h3 class="p-1 shadow-lg rounded-1">Menu</h3> </button> 
       </div>
     </div>
   </div>
@@ -824,7 +839,8 @@
         {% empty %}
         <img src="{% static 'img/logo.jpg' %}" alt="Logo">
         {% endfor %}
-        <h4 class="display-1">Kilihappy</h4>
+        <h4 class="display-1">Kilihappy <small>Tanzania Adventures</small></h4>
+       
       </div>
       <i class="fas fa-times close-sidebar" onclick="toggleSidebar()"></i>
     </div>
