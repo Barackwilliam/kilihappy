@@ -788,51 +788,110 @@
       </div>
     </div>
   </div>
-
-   <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative" style="background: #11274b; color: #fff;">
-  <div class="container">
-     <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone te"></i>: +255658571653</a>
-    <div class="d-flex justify-content-between w-100">
-      <div class="d-flex ">
-     <a href="mailto:info@kilihappytanzaniaadventures.com" class="text-white me-3"><i class="fas fa-envelope"></i>: info@kilihappytanzaniaadventures.com</a>
-    </div>
-    </div>
+<div class="container-fluid d-flex flex-column align-items-center justify-content-center text-center py-4 touristic-bg">
+  <a href="tel:+255760389236" class="text-white mb-2 contact-link">
+    <i class="fas fa-phone"></i> +255 658 571 653
+  </a>
+  <a href="mailto:info@kilihappytanzaniaadventures.com" class="text-white contact-link">
+    <i class="fas fa-envelope"></i> info@kilihappytanzaniaadventures.com
+  </a>
+  <p class="mb-2 text-white contact-link">
+    <i class="fas fa-map-marker-alt me-3"></i> Olasiti, Arusha, Tanzania
+  </p>
+  <div class="d-inline-flex align-items-center mt-2" style="height: 45px;">
+    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
+    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
+    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
+    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
+    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
   </div>
+</div>
+
+<style>
+  /* 🌅 Touristic Gradient Background */
+  .touristic-bg {
+    background: linear-gradient(135deg, #005C97 0%, #363795 40%, #FFB347 100%);
+    background-size: 200% 200%;
+    animation: gradientFlow 10s ease infinite;
+  }
+
+  @keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #FFB81C;
+    font-size: 1.1rem;
+    padding: 8px 12px;
+    border-radius: 20px;
+    background: rgba(26, 42, 68, 0.5);
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .contact-link:hover {
+    color: #FFD700;
+    transform: scale(1.05);
+  }
+
+  .contact-link i {
+    margin-right: 8px;
+    color: #FF9E00;
+  }
+
+  @media (max-width: 768px) {
+    .contact-link {
+      font-size: 1rem;
+      padding: 6px 10px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .contact-link {
+      font-size: 0.9rem;
+      padding: 5px 8px;
+    }
+  }
+</style>
+
 </nav>
 
 
  <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative" style="background: #1a2a44; color: #fff;">
   <div class="container">
-    <!-- <div class="d-flex align-items-center justify-content-between w-100"> -->
-    <div class="d-flex justify-content-between w-100">
+    <div class="d-flex align-items-center justify-content-between w-100">
       <a href="{% url 'admin:index' %}" class="navbar-brand d-flex align-items-center">
-    <img src="{% static 'img/logo.jpg' %}" alt="Logo"  class="logo-img me-2" style="width: 50px; height: auto;">
+    <img src="{% static 'img/logo.jpg' %}" alt="Logo"  class="logo-img me-2" style="width: 90px; height: auto;">
         <div>
-          <span style="font-size: 1.5rem; font-weight: bold; color: #ffcc00; font-family: 'Merienda', cursive;">Kilihappy</span>
+          <!-- <span style="font-size: 1.5rem; font-weight: bold; color: #ffcc00; font-family: 'Merienda', cursive;">Kilihappy</span>
           <p style="font-size: 1rem; margin: 0; color: #ffcc00;font-family: 'Merienda', cursive;">Tanzania Adventures</p>
-        </div>
+        </div> -->
       </a>
-      <div class="d-flex">
-        <div class="dropdown">
+      <div class="d-flex align-items-center">
+        <!-- <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone"></i> +255 760 389 236</a><br>
+        <a href="mailto:info@greattimeexp" class="text-white me-3"><i class="fas fa-envelope"></i> info@greattimeexp</a> -->
+        <!-- <div class="dropdown">
           <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://flagcdn.com/w20/gb.png" alt="English" class="me-1"> EN
           </button>
           <ul class="dropdown-menu" aria-labelledby="languageDropdown">
             <li><a class="dropdown-item text-light" href="#">English</a></li>
             <li><a class="dropdown-item text-light" href="#">Swahili</a></li>
-            <li><a class="dropdown-item text-light" href="#">France</a></li>
-            <li><a class="dropdown-item text-light" href="#">Canada</a></li>
           </ul>
-        </div>
-        <!-- <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone"></i> +255 760 389 236</a><br>
-        <a href="mailto:info@greattimeexp" class="text-white me-3"><i class="fas fa-envelope"></i> info@greattimeexp</a> -->
-        <button style="color: yellow;" class="navbar-toggler d-lg-none ms-2 border-1 shadow-lg rounded-0 p-1" 
-        type="button" 
-        onclick="toggleSidebar()" 
-        style="font-size: 1.2rem; transition: 0.3s ease;">
-          <i class="fas fa-bars"></i>
-        <h3 class="p-1 shadow-lg rounded-1">Menu</h3> 
-      </button> 
+        </div> -->
+       <button 
+      class="navbar-toggler d-lg-none ms-2 border-1 shadow-lg rounded-2 p-3" 
+      type="button" 
+      onclick="toggleSidebar()" 
+      style="color: yellow; font-size: 1.8rem; background-color: transparent; transition: 0.3s ease; border: 1.8px solid yellow;">
+      <i class="fas fa-bars" style="font-size: 2.2rem;"></i>
+    </button>
+
+         <!-- <h3 class="p-1 shadow-lg rounded-1">Menu</h3> -->
       </div>
     </div>
   </div>
@@ -896,8 +955,6 @@
           <li><a href="{% url 'questions' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-question-circle"></i>FAQ</a></li>
         </ul>
       </li>
-        <li><a href="{% url 'terms_and_conditions' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-concierge-bell"></i>Terms & Conditions</a></li>
-
     </ul>
   </div>
   <!-- Sidebar Overlay -->
@@ -919,7 +976,7 @@
             <a class="btn btn-link" href="{% url 'destinations_list' %}" onclick="showLoading(event)">Our Destinations</a>
             <a class="btn btn-link" href="{% url 'team' %}" onclick="showLoading(event)">Our Travel Guides</a>
             <a class="btn btn-link" href="">Privacy Policy</a>
-            <a class="btn btn-link" href="{% url 'terms_and_conditions' %}">Terms & Condition</a>
+            <a class="btn btn-link" href="">Terms & Condition</a>
             <a class="btn btn-link" href="{% url 'questions' %}" onclick="showLoading(event)">FAQs & Help</a>
           </div>
           <div class="col-lg-3 col-md-6">
