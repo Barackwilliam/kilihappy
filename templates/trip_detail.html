@@ -1,66 +1,147 @@
-  {% extends 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% load package_icons %}
-
 
 {% block title %}{{ trip.title }}{% endblock %}
 
 {% block content %}
-<section class="container py-5">
-  <div class="row">
-    <div class="col-md-8">
-      <h1 class="mb-3">{{ trip.title }}</h1>
-      {% if trip.featured_image %}
-        <img src="{{ trip.featured_image }}" class="img-fluid mb-4 rounded" alt="{{ trip.title }}">
-      {% endif %}
-      <p><strong>Location:</strong> {{ trip.location }}</p>
-      <p><strong>Days:</strong> {{ trip.days }}</p>
-      <p><strong>Type:</strong> {{ trip.trip_type }}</p>
-      {% if trip.route %}<p><strong>Route:</strong> {{ trip.route }}</p>{% endif %}
-      {% if trip.price %}<p><strong>Price:</strong> ${{ trip.price }}</p>{% endif %}
-      <h5 class="mt-4">Overview</h5>
-      <p>{{ trip.overview }}</p>
+<style>
+  /* Global gradient background */
+  .gradient-bg {
+    background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
+    min-height: 100vh;
+  }
 
-      <h5 class="mt-5">Day Trip Itinerary</h5>
-      <div class="accordion" id="itineraryAccordion">
-        {% for day in trip.itinerary.all %}
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="heading{{ day.day_number }}">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ day.day_number }}" aria-expanded="false" aria-controls="collapse{{ day.day_number }}">
-              Day {{ day.day_number }}: {{ day.title }}
-            </button>
-          </h2>
-          <div id="collapse{{ day.day_number }}" class="accordion-collapse collapse" aria-labelledby="heading{{ day.day_number }}" data-bs-parent="#itineraryAccordion">
-            <div class="accordion-body">
-              {% if day.elevation_start and day.elevation_end %}<p><strong>Elevation:</strong> {{ day.elevation_start }} to {{ day.elevation_end }}</p>{% endif %}
-              {% if day.distance_km %}<p><strong>Distance:</strong> {{ day.distance_km }} km</p>{% endif %}
-              {% if day.hiking_time %}<p><strong>Hiking Time:</strong> {{ day.hiking_time }}</p>{% endif %}
-              {% if day.habitat %}<p><strong>Habitat:</strong> {{ day.habitat }}</p>{% endif %}
-              <p>{{ day.description }}</p>
+  /* Glassmorphism card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    border-radius: 1.25rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+  }
+
+  /* Headings */
+  h1, h5 {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  /* Accordion modern look */
+  .accordion-button {
+    font-weight: 600;
+    background-color: #f8f9fa;
+    border-radius: 0.75rem !important;
+    transition: all 0.3s ease;
+  }
+  .accordion-button:focus {
+    box-shadow: none;
+  }
+  .accordion-button::after {
+    content: "➕";
+    font-size: 1rem;
+    transform: none !important;
+  }
+  .accordion-button:not(.collapsed)::after {
+    content: "➖";
+    color: red;
+  }
+.accordion-button:not(.collapsed) {
+    color: red;
+}
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.8rem;
+    }
+    .glass-card {
+      padding: 1rem;
+    }
+  }
+</style>
+
+<br><br>
+<section class="gradient-bg py-5">
+  <div class="container">
+    <div class="row g-4">
+      
+      <!-- Trip Main -->
+      <div class="col-lg-8">
+        <div class="glass-card p-4 mb-4">
+          <h1 class="mb-3 text-dark">{{ trip.title }}</h1>
+
+          {% if trip.featured_image %}
+            <img src="{{ trip.featured_image }}" 
+                 class="img-fluid mb-4 rounded-3 shadow-sm" 
+                 alt="{{ trip.title }}">
+          {% endif %}
+
+          <ul class="list-unstyled mb-4">
+            <li><strong>📍 Location:</strong> {{ trip.location }}</li>
+            <li><strong>⏳ Days:</strong> {{ trip.days }}</li>
+            <li><strong>🌍 Type:</strong> {{ trip.trip_type }}</li>
+            {% if trip.route %}<li><strong>🛣 Route:</strong> {{ trip.route }}</li>{% endif %}
+            {% if trip.price %}<li><strong>💲 Price:</strong> ${{ trip.price }}</li>{% endif %}
+          </ul>
+
+          <h5 class="mt-4">Overview</h5>
+          <p class="text-muted">{{ trip.overview }}</p>
+
+          <h5 class="mt-5">Day Trip Itinerary</h5>
+          <div class="accordion" id="itineraryAccordion">
+            {% for day in trip.itinerary.all %}
+            <div class="accordion-item glass-card mb-2">
+              <h2 class="accordion-header" id="heading{{ day.day_number }}">
+                <button class="accordion-button collapsed" type="button" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#collapse{{ day.day_number }}" 
+                        aria-expanded="false" 
+                        aria-controls="collapse{{ day.day_number }}">
+                  Day {{ day.day_number }}: {{ day.title }}
+                </button>
+              </h2>
+              <div id="collapse{{ day.day_number }}" 
+                   class="accordion-collapse collapse" 
+                   aria-labelledby="heading{{ day.day_number }}" 
+                   data-bs-parent="#itineraryAccordion">
+                <div class="accordion-body">
+                  {% if day.elevation_start and day.elevation_end %}
+                    <p><strong>Elevation:</strong> {{ day.elevation_start }} → {{ day.elevation_end }}</p>
+                  {% endif %}
+                  {% if day.distance_km %}
+                    <p><strong>Distance:</strong> {{ day.distance_km }} km</p>
+                  {% endif %}
+                  {% if day.hiking_time %}
+                    <p><strong>Hiking Time:</strong> {{ day.hiking_time }}</p>
+                  {% endif %}
+                  {% if day.habitat %}
+                    <p><strong>Habitat:</strong> {{ day.habitat }}</p>
+                  {% endif %}
+                  <p>{{ day.description }}</p>
+                </div>
+              </div>
             </div>
+            {% endfor %}
           </div>
         </div>
-        {% endfor %}
       </div>
+
+      <!-- Includes & Excludes Section -->
+      <div class="col-lg-12">
+        <div class="glass-card p-4 mb-4">
+          {% include "includes_excludes_section.html" with includes=includes excludes=excludes %}
+        </div>
+      </div>
+
     </div>
-
-    <!-- <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body"> -->
-
-     
-{% include "includes_excludes_section.html" with includes=includes excludes=excludes %}
-
-
-
-</div>
-
- <!-- Booking Start -->
- {% include 'booking_form.html' %}
-
- 
-
-
   </div>
+
+  <!-- Booking Form -->
+  {% include 'booking_form.html' %}
 </section>
 {% endblock %}

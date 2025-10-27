@@ -41,7 +41,6 @@ class TravelPackageItem(models.Model):
         return f"{self.get_item_type_display()}: {self.title}"
 
 
-
 class Service(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
