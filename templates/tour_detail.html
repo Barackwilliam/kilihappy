@@ -96,7 +96,7 @@
 
           <h5 class="mt-5">Tour Itinerary</h5>
           <div class="accordion" id="itineraryAccordion">
-            {% for day in tour.itinerary.all %}
+            {% for day in tour.itinerary.all|dictsort:"day_number" %}
             <div class="accordion-item glass-card mb-2">
               <h2 class="accordion-header" id="heading{{ day.day_number }}">
                 <button class="accordion-button collapsed" type="button" 
