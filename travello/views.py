@@ -447,37 +447,6 @@ def tour_detail(request, pk):
     return render(request, 'tour_detail.html', context)
 
 
-# def safari_detail(request, pk):
-#     safari = Travel.objects.all()
-#     tours = Tour.objects.all()
-#     trip = Trip_DB.objects.all()
-
-#     # all_packages = Package.objects.all()
-
-
-#     safaris =  get_object_or_404(
-#         Travel.objects.prefetch_related(package_items_prefetch),
-#         pk=pk
-#     )
-#     includes = safari.includes.all()
-#     excludes = safari.excludes.all()
-
-#     context = {
-#         "safaris": safaris,
-#         "safari": safari,
-#         'trip': trip,
-#         'tours':tours,
-#         "includes": includes,
-#         "excludes": excludes,
-#         "other_tours": Tour.objects.filter(location__icontains=safari.location)[:3],
-#         "related_trips": Trip_DB.objects.filter(location__icontains=safari.location)[:3],
-#     }
-
-
-#     return render(request, 'safari_detail.html',context)
-
-
-
 def safari_detail(request, pk):
 
     if request.method == "POST":
@@ -549,38 +518,6 @@ def Trip_list(request):
     return render(request, 'trip_list.html', {'compan':compan,'qn':qn,'tours': tours, 'trip': trip, 'trip_types': trip_types,
         "trips_list": trips_list,
         "safari_list": safari_list,})
-
-
-
-# def Trip_detail(request, pk):
-#     safari = Travel.objects.all()
-#     trip = Trip_DB.objects.all()
-#     tours = Tour.objects.all()
-#     # all_packages = Package.objects.all()
-
-
-#     trips = get_object_or_404(
-#         Trip_DB.objects.prefetch_related(package_items_prefetch),
-#         pk=pk
-#     )
-
-
-#     includes = trip.includes.all()
-#     excludes = trip.excludes.all()
-
-#     context = {
-#         "trips": trips,
-#         "trip": trip,
-#         'safari':safari,
-#         'tours':tours,
-#         "includes": includes,
-#         "excludes": excludes,
-#         "related_tours": Tour.objects.filter(location__icontains=trip.location)[:3],
-#         "related_safaris": Travel.objects.filter(location__icontains=trip.location)[:3],
-#     }
-#     return render(request, 'trip_detail.html',context
-# )
-
 
 
 
