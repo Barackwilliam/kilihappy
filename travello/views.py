@@ -1092,24 +1092,57 @@ from .models import UserVisit, UserActivity
 
 IPINFO_TOKEN = "0fe180f7e54cf6"
 
-def get_location_from_ip(ip_address):
-    """Get location information using ipinfo.io"""
-    if ip_address in ["127.0.0.1", "localhost"]:
+# def get_location_from_ip(ip_address):
+#     """Get location information using ipinfo.io"""
+#     if ip_address in ["127.0.0.1", "localhost"]:
+#         return {"country": "Localhost", "region": None, "city": None}
+
+#     try:
+#         url = f"https://ipinfo.io/{ip_address}?token={IPINFO_TOKEN}"
+#         response = requests.get(url, timeout=5)
+#         if response.status_code == 200:
+#             data = response.json()
+#             return {
+#                 "country": data.get("country"),
+#                 "region": data.get("region"),
+#                 "city": data.get("city")
+#             }
+#     except Exception as e:
+#         print(f"IP lookup error: {e}")
+#     return {"country": None, "region": None, "city": None}
+def get_location_from_ip(ip):
+    # LOCALHOST SPECIAL CASE
+    if ip in ["127.0.0.1", "localhost"]:
         return {"country": "Localhost", "region": None, "city": None}
 
+    # ------------ PRIMARY PROVIDER: ip-api (Unlimited, No Token) ---------------
     try:
-        url = f"https://ipinfo.io/{ip_address}?token={IPINFO_TOKEN}"
-        response = requests.get(url, timeout=5)
-        if response.status_code == 200:
-            data = response.json()
+        url = f"http://ip-api.com/json/{ip}"
+        r = requests.get(url, timeout=4).json()
+
+        if r.get("status") == "success":
             return {
-                "country": data.get("country"),
-                "region": data.get("region"),
-                "city": data.get("city")
+                "country": r.get("countryCode"),
+                "region": r.get("regionName"),
+                "city": r.get("city")
             }
-    except Exception as e:
-        print(f"IP lookup error: {e}")
-    return {"country": None, "region": None, "city": None}
+    except:
+        pass
+
+    # ------------ FALLBACK PROVIDER: ipinfo.io (Optional) ---------------
+    try:
+        url = f"https://ipinfo.io/{ip}?token={IPINFO_TOKEN}"
+        r = requests.get(url, timeout=4).json()
+
+        return {
+            "country": r.get("country"),
+            "region": r.get("region"),
+            "city": r.get("city")
+        }
+    except:
+        return {"country": None, "region": None, "city": None}
+
+
 
 
 def get_client_ip(request):
@@ -1156,25 +1189,61 @@ class TrackVisitView(View):
         return JsonResponse({"status": "success", "visit_id": visit.id})
 
 
+
+
 @method_decorator(csrf_exempt, name="dispatch")
-class TrackActivityView(View):
+class TrackVisitView(View):
     def post(self, request):
-        try:
-            data = json.loads(request.body.decode("utf-8"))
-            visit_id = data.get("visit_id")
-            activity_type = data.get("activity_type")
-            activity_details = data.get("activity_details", "")
+        data = json.loads(request.body.decode("utf-8"))
 
-            visit = UserVisit.objects.get(id=visit_id)
+        ip_address = get_client_ip(request)
+        user_agent = request.META.get("HTTP_USER_AGENT", "")
+        page_visited = data.get("page_visited", "")
+        referrer = data.get("referrer", "")
 
-            UserActivity.objects.create(
-                visit=visit,
-                activity_type=activity_type,
-                activity_details=activity_details,
-            )
-            return JsonResponse({"status": "success"})
-        except Exception as e:
-            return JsonResponse({"status": "error", "message": str(e)}, status=400)
+        visit, created = UserVisit.objects.get_or_create(
+            ip_address=ip_address,
+            page_visited=page_visited,
+            defaults={
+                "user_agent": user_agent,
+                "referrer": referrer,
+                "visit_count": 1,
+            },
+        )
+
+        if not created:
+            visit.visit_count += 1
+            visit.save()
+
+        # GET LOCATION USING NEW SYSTEM
+        location = get_location_from_ip(ip_address)
+        visit.country = location["country"]
+        visit.region = location["region"]
+        visit.city = location["city"]
+        visit.save()
+
+        return JsonResponse({"status": "success", "visit_id": visit.id})
+
+
+# @method_decorator(csrf_exempt, name="dispatch")
+# class TrackActivityView(View):
+#     def post(self, request):
+#         try:
+#             data = json.loads(request.body.decode("utf-8"))
+#             visit_id = data.get("visit_id")
+#             activity_type = data.get("activity_type")
+#             activity_details = data.get("activity_details", "")
+
+#             visit = UserVisit.objects.get(id=visit_id)
+
+#             UserActivity.objects.create(
+#                 visit=visit,
+#                 activity_type=activity_type,
+#                 activity_details=activity_details,
+#             )
+#             return JsonResponse({"status": "success"})
+#         except Exception as e:
+#             return JsonResponse({"status": "error", "message": str(e)}, status=400)
 
 
 
