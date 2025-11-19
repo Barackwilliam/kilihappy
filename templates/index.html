@@ -403,100 +403,180 @@ document.getElementById("scrollToBooking")?.addEventListener("click", function (
   </div>
 </div>
 
-<!-- Kilimanjaro Climbing Section -->
-<div class="container">
-  <h1 style="text-align: center; font-family: 'Times New Roman', Times, serif; color: #b21f1f;">
-    <b>Mt Kilimanjaro Climbing and Tanzania Safaris</b>
-  </h1>
-  <p style="text-align: center;">
-    Embark on unforgettable <b>Mt Kilimanjaro climbing</b> and conquer Africa's highest peak, standing tall at 5,895 meters. Choose iconic routes like the <b>scenic Machame Route</b>, the <b>challenging Lemosho Route</b>, or the shorter <b>Marangu Route</b>, each offering breathtaking views and a unique trekking experience. As you ascend, traverse diverse ecosystems—from lush rainforests to alpine deserts—culminating in the incredible achievement of reaching <b>Uhuru Peak</b>, the "Roof of Africa." Whether you're a seasoned climber or a first-time adventurer, these tours promise a life-changing journey filled with natural beauty and personal triumph.
-  </p>
-  <p style="text-align: center;">
-    After the climb, immerse yourself in the wonders of <b>Tanzania safaris</b>, exploring world-famous destinations like the <b>Serengeti</b>, home to the spectacular <b>Great Migration</b>, or the wildlife-rich <b>Ngorongoro Crater</b>, where you can encounter the legendary Big Five. Visit <b>Tarangire National Park</b>, renowned for its majestic elephant herds and ancient baobab trees, and unwind in luxury lodges or tented camps featuring gourmet dining and personalized service. Combining <b>Mount Kilimanjaro climbing tours</b> with <b>Tanzania safaris</b> offers the perfect blend of adventure and relaxation, creating a once-in-a-lifetime experience in the heart of Africa.
-  </p>
+<!-- ======== LUXURY SAFARI SECTION ======== -->
+<style>
 
-  <!-- Bootstrap Carousel -->
-  <div id="safariCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      {% for item in climbing %}
-        {% if item.image_1 %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-          <img src="{{item.image_1}}" class="d-block w-100" alt="Tanzania Safari">
-          <div class="carousel-caption-top">
-            <h3>{{item.title_1}}</h3>
-          </div>
+    /* BACKGROUND IMAGE */
+    .safari-hero {
+        background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeTA654uuku3Gge98TZGRvt_USGXSvrFsnEg&s')
+                    center/cover no-repeat;
+        width: 100%;
+        padding: 120px 0;
+        position: relative;
+    }
+
+    /* DARK OVERLAY FOR DEPTH */
+    .safari-hero::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(20, 20, 20, 0.55);
+        backdrop-filter: blur(4px);
+    }
+
+    /* MAIN GLASS CONTAINER */
+    .safari-content-box {
+        position: relative;
+        z-index: 3;
+        background: rgba(255, 255, 255, 0.12);
+        padding: 45px;
+        border-radius: 22px;
+        max-width: 1100px;
+        margin: auto;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        backdrop-filter: blur(15px);
+        box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+        animation: fadeUp 1s ease;
+    }
+
+    /* GOLD TITLE */
+    .safari-title {
+        font-size: 48px;
+        font-weight: 900;
+        text-align: center;
+        letter-spacing: 1px;
+        background: linear-gradient(90deg, #ffdd8a, #e3b75d, #ffdd8a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0px 4px 12px rgba(0,0,0,0.5);
+        margin-bottom: 20px;
+        font-family: "Cinzel", serif;
+    }
+
+    /* PARAGRAPH STYLE */
+    .safari-text {
+        font-size: 20px;
+        line-height: 1.8;
+        text-align: center;
+        color: #f7f3e8;
+        font-family: "Cormorant Garamond", serif;
+        margin-bottom: 18px;
+    }
+
+    /* CAROUSEL IMAGE STYLE */
+    .safari-carousel img {
+        height: 480px;
+        object-fit: cover;
+        border-radius: 18px;
+        filter: brightness(80%) contrast(110%);
+    }
+
+    /* CAPTION */
+    .caption-box {
+        position: absolute;
+        bottom: 40px;
+        left: 40px;
+        background: rgba(0,0,0,0.55);
+        color: #ffdd8a;
+        padding: 12px 23px;
+        border-radius: 10px;
+        font-size: 22px;
+        font-weight: bold;
+        font-family: "Poppins", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        backdrop-filter: blur(4px);
+        border-left: 4px solid #ffdd8a;
+    }
+
+    /* CONTROLS WHITE */
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+        filter: invert(100%);
+    }
+
+    /* ANIMATION */
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+</style>
+
+<section class="safari-hero">
+
+    <div class="safari-content-box">
+        
+        <!-- TITLE -->
+        <h1 class="safari-title">Mount Kilimanjaro & Tanzania Safaris</h1>
+
+        <!-- PARAGRAPHS -->
+        <p class="safari-text">
+            Discover the breathtaking adventure of climbing <b>Mount Kilimanjaro</b>, Africa’s highest summit.
+            Choose from legendary routes like <b>Machame</b>, <b>Lemosho</b>, or <b>Marangu</b>, each offering
+            unforgettable scenery from rainforest to snowy peak.
+        </p>
+
+        <p class="safari-text">
+            After your climb, dive into world-class <b>Tanzania safaris</b>. Explore the <b>Serengeti</b>,
+            witness the <b>Great Migration</b>, and experience the wildlife haven of the <b>Ngorongoro Crater</b>.
+            Luxury lodges, stunning landscapes, and lifetime memories await you.
+        </p>
+
+        <!-- CAROUSEL -->
+        <div id="safariCarousel" class="carousel slide safari-carousel mt-4" data-bs-ride="carousel">
+
+            <div class="carousel-inner">
+                {% for item in climbing %}
+                
+                    {% if item.image_1 %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img src="{{ item.image_1 }}" class="d-block w-100">
+                        <div class="caption-box">{{ item.title_1 }}</div>
+                    </div>
+                    {% endif %}
+
+                    {% if item.image_2 %}
+                    <div class="carousel-item">
+                        <img src="{{ item.image_2 }}" class="d-block w-100">
+                        <div class="caption-box">{{ item.title_2 }}</div>
+                    </div>
+                    {% endif %}
+
+                    {% if item.image_3 %}
+                    <div class="carousel-item">
+                        <img src="{{ item.image_3 }}" class="d-block w-100">
+                        <div class="caption-box">{{ item.title_3 }}</div>
+                    </div>
+                    {% endif %}
+
+                    {% if item.image_4 %}
+                    <div class="carousel-item">
+                        <img src="{{ item.image_4 }}" class="d-block w-100">
+                        <div class="caption-box">{{ item.title_4 }}</div>
+                    </div>
+                    {% endif %}
+                
+                {% endfor %}
+            </div>
+
+            <!-- CONTROLS -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#safariCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#safariCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+
         </div>
-        {% endif %}
-        {% if item.image_2 %}
-        <div class="carousel-item">
-          <img src="{{item.image_2}}" class="d-block w-100" alt="Tanzania Safari">
-          <div class="carousel-caption-top">
-            <h3>{{item.title_2}}</h3>
-          </div>
-        </div>
-        {% endif %}
-        {% if item.image_3 %}
-        <div class="carousel-item">
-          <img src="{{item.image_3}}" class="d-block w-100" alt="Tanzania Safari">
-          <div class="carousel-caption-top">
-            <h3>{{item.title_3}}</h3>
-          </div>
-        </div>
-        {% endif %}
-        {% if item.image_4 %}
-        <div class="carousel-item">
-          <img src="{{item.image_4}}" class="d-block w-100" alt="Tanzania Safari">
-          <div class="carousel-caption-top">
-            <h3>{{item.title_4}}</h3>
-          </div>
-        </div>
-        {% endif %}
-        {% if item.image_5 %}
-        <div class="carousel-item">
-          <img src="{{item.image_5}}" class="d-block w-100" alt="Tanzania Safari">
-          <div class="carousel-caption-top">
-            <h3>{{item.title_5}}</h3>
-          </div>
-        </div>
-        {% endif %}
-        {% if item.image_6 %}
-        <div class="carousel-item">
-          <img src="{{item.image_6}}" class="d-block w-100" alt="Tanzania Safari">
-          <div class="carousel-caption-top">
-            <h3>{{item.title_6}}</h3>
-          </div>
-        </div>
-        {% endif %}
-        {% if item.image_7 %}
-        <div class="carousel-item">
-          <img src="{{item.image_7}}" class="d-block w-100" alt="Tanzania Safari">
-          <div class="carousel-caption-top">
-            <h3>{{item.title_7}}</h3>
-          </div>
-        </div>
-        {% endif %}
-        {% if item.image_8 %}
-        <div class="carousel-item">
-          <img src="{{item.image_8}}" class="d-block w-100" alt="Tanzania Safari">
-          <div class="carousel-caption-top">
-            <h3>{{item.title_8}}</h3>
-          </div>
-        </div>
-        {% endif %}
-      {% endfor %}
+
     </div>
 
-    <!-- Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#safariCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#safariCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</div>
+</section>
+
 
 <!-- Best Time to Visit Section -->
 <div class="container py-5 bg-dark text-light rounded-4 shadow-lg">
@@ -527,7 +607,7 @@ document.getElementById("scrollToBooking")?.addEventListener("click", function (
 
       <div class="bg-warning-subtle rounded-3 p-3 mt-4">
         <h6 class="text-danger fw-semibold">🚫 Avoid These Months:</h6>
-        <p style="color: #000000;" class="mb-0">April to May and November – These are the rainy seasons, trails become muddy and slippery, visibility is low, and summit success rates drop significantly.</p>
+        <p style="color: #ffffff;" class="mb-0">April to May and November – These are the rainy seasons, trails become muddy and slippery, visibility is low, and summit success rates drop significantly.</p>
       </div>
     </div>
 
@@ -623,7 +703,7 @@ document.getElementById("scrollToBooking")?.addEventListener("click", function (
 
       <div class="bg-warning-subtle rounded-3 p-3 mt-4">
         <h6 class="text-danger fw-semibold">🚫 Avoid These Months:</h6>
-        <p style="color: black;" class="mb-0">April and May – Heavy rains make roads muddy, some lodges close, and wildlife viewing becomes difficult.</p>
+        <p style="color: rgb(255, 255, 255);" class="mb-0">April and May – Heavy rains make roads muddy, some lodges close, and wildlife viewing becomes difficult.</p>
       </div>
     </div>
 

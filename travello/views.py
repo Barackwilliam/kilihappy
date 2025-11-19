@@ -31,7 +31,7 @@ def index(request):
     compan = company.objects.all()[:1]
     home_text = Welcome_text.objects.all()[:1]
     climbing = Kilimanjaro_climbing_image.objects.all()
-    tour_list = Explore_zanzibar.objects.all()
+    tour_list = Explore_zanzibar.objects.all()[:3]
     headline = Headline.objects.all()[:1]
 
 
