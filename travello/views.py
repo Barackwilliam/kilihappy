@@ -1,5 +1,9 @@
 from django.shortcuts import render,redirect
 from django.db.models import Prefetch
+from .models import UserVisit, UserActivity
+from django.views import View
+import json
+
 
 from .models import  Headline,FAQ,CampingSafaris,HoneymoonSafaris,Serengeti_migration,zanzibar_Itiner,Explore_zanzibar, Kilimanjaro_climbing_image,company, TravelPackageItem,Welcome_text,Service,Travels_Destination,Travel,Step_for_booking,Team,User_Testimonial,Gallery,About_This_Organization,Trip_DB
 #from .models import Destination
@@ -1223,6 +1227,34 @@ class TrackVisitView(View):
         visit.save()
 
         return JsonResponse({"status": "success", "visit_id": visit.id})
+
+
+class TrackActivityView(View):
+    def post(self, request, *args, **kwargs):
+        try:
+            data = json.loads(request.body.decode("utf-8"))
+            visit_id = data.get("visit_id")
+            activity_type = data.get("activity_type")
+            activity_details = data.get("activity_details", "")
+
+            if not visit_id or not activity_type:
+                return JsonResponse({"error": "Missing fields"}, status=400)
+
+            try:
+                visit = UserVisit.objects.get(id=visit_id)
+            except UserVisit.DoesNotExist:
+                return JsonResponse({"error": "Visit not found"}, status=404)
+
+            UserActivity.objects.create(
+                visit=visit,
+                activity_type=activity_type,
+                activity_details=activity_details
+            )
+
+            return JsonResponse({"status": "success"}, status=201)
+
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
 
 
 # @method_decorator(csrf_exempt, name="dispatch")
