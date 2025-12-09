@@ -5,7 +5,7 @@ from django.views import View
 import json
 
 
-from .models import  Headline,FAQ,CampingSafaris,HoneymoonSafaris,Serengeti_migration,zanzibar_Itiner,Explore_zanzibar, Kilimanjaro_climbing_image,company, TravelPackageItem,Welcome_text,Service,Travels_Destination,Travel,Step_for_booking,Team,User_Testimonial,Gallery,About_This_Organization,Trip_DB
+from .models import  MountMeruSlide,Headline,FAQ,CampingSafaris,HoneymoonSafaris,Serengeti_migration,zanzibar_Itiner,Explore_zanzibar, Kilimanjaro_climbing_image,company, TravelPackageItem,Welcome_text,Service,Travels_Destination,Travel,Step_for_booking,Team,User_Testimonial,Gallery,About_This_Organization,Trip_DB
 #from .models import Destination
 
 # Create your views here.
@@ -33,6 +33,8 @@ def index(request):
     climbing = Kilimanjaro_climbing_image.objects.all()
     tour_list = Explore_zanzibar.objects.all()[:3]
     headline = Headline.objects.all()[:1]
+    slider = MountMeruSlide.objects.first()  
+
 
 
     services = Service.objects.all()[:3]
@@ -52,6 +54,7 @@ def index(request):
     gallery = Gallery.objects.all()
 
     context = {
+        'slider':slider,
           'qn':qn,
         "form": form,
       'tour_list':tour_list,

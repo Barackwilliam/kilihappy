@@ -1,6 +1,6 @@
 # myapp/forms.py
 from django import forms
-from .models import CampingSafaris,HoneymoonSafaris,Serengeti_migration,Explore_zanzibar,Kilimanjaro_climbing_image,company,Service,Team,Step_for_booking,Travel,Trip_DB,User_Testimonial,Travels_Destination,Gallery,About_This_Organization,Tour,Welcome_text
+from .models import MountMeruSlide,CampingSafaris,HoneymoonSafaris,Serengeti_migration,Explore_zanzibar,Kilimanjaro_climbing_image,company,Service,Team,Step_for_booking,Travel,Trip_DB,User_Testimonial,Travels_Destination,Gallery,About_This_Organization,Tour,Welcome_text
 
 class ServiceAdminForm(forms.ModelForm):
     class Meta:
@@ -36,6 +36,16 @@ class Welcome_textAdminForm(forms.ModelForm):
 class Kilimanjaro_climbing_imageAdminForm(forms.ModelForm):
     class Meta:
         model = Kilimanjaro_climbing_image
+        fields = '__all__'
+
+    class Media:
+        js = [
+            'https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js',
+        ]
+
+class MountMeruSlideAdminForm(forms.ModelForm):
+    class Meta:
+        model = MountMeruSlide
         fields = '__all__'
 
     class Media:

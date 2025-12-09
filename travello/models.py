@@ -499,6 +499,33 @@ class Welcome_text(models.Model):
 
 
 
+
+class MountMeruSlide(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+
+    # Five images for the slider
+    image1 = models.CharField(max_length=255, blank=True, null=True) 
+    image2 = models.CharField(max_length=255, blank=True, null=True) 
+    image3 = models.CharField(max_length=255, blank=True, null=True) 
+    image4 = models.CharField(max_length=255, blank=True, null=True) 
+    image5 = models.CharField(max_length=255, blank=True, null=True) 
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = "Mount Meru Slide"
+        verbose_name_plural = "Mount Meru Slides"
+        ordering = ['title']
+
+
+
+
+
+
 class Kilimanjaro_climbing_image(models.Model):
     title_1 = models.CharField(max_length=100)
     image_1 = models.CharField(max_length=255, blank=True, null=True) 

@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import TravelPackageItem, Travels_Destination,Service,Team,User_Testimonial,Travel,Step_for_booking,Gallery,About_This_Organization,Trip_DB,Trip_Itinerary_DB
 from .models import Headline,CampingSafaris,Camping_Itiner,Honeymoon_Itiner,HoneymoonSafaris,Serengeti_Itiner,zanzibar_Itiner,Explore_zanzibar,Kilimanjaro_climbing_image,Tour,Contact_Message,Tour_Itinerary,Travel_Itiner,Welcome_text,company,Serengeti_migration
 from django.utils.safestring import mark_safe
-from .forms import CampingSafarisForm,HoneymoonSafarisForm,Serengeti_migrationForm, Explore_zanzibarForm,Kilimanjaro_climbing_imageAdminForm,companyAdminForm, ServiceAdminForm,Step_for_bookingAdminForm,DestinationForm,User_TestimonialForm,TourForm,About_This_OrganizationForm,GalleryForm,TravelForm,Trip_DBForm,Welcome_textAdminForm
+from .forms import MountMeruSlideAdminForm,CampingSafarisForm,HoneymoonSafarisForm,Serengeti_migrationForm, Explore_zanzibarForm,Kilimanjaro_climbing_imageAdminForm,companyAdminForm, ServiceAdminForm,Step_for_bookingAdminForm,DestinationForm,User_TestimonialForm,TourForm,About_This_OrganizationForm,GalleryForm,TravelForm,Trip_DBForm,Welcome_textAdminForm
 
 # Register your models here.
 
@@ -685,3 +685,36 @@ class TermsAndConditionsAdmin(admin.ModelAdmin):
             'classes': ('collapse',),
         }),
     )
+
+from django.contrib import admin
+from django.utils.safestring import mark_safe
+from .models import MountMeruSlide
+from django.utils.html import format_html
+
+@admin.register(MountMeruSlide)
+class MountMeruSlideAdmin(admin.ModelAdmin):
+    form = MountMeruSlideAdminForm
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        formfield = super().formfield_for_dbfield(db_field, **kwargs)
+        if db_field.name in ['image1', 'image2', 'image3', 'image4', 'image5']:
+            formfield.widget.attrs.update({
+                'role': 'uploadcare-uploader',
+                'data-public-key': 'cff49d484a4e0a5d423f',
+            })
+        return formfield
+
+    def image_preview(self, obj):
+        previews = []
+        for img_field in ['image1', 'image2', 'image3', 'image4', 'image5']:
+            img_val = getattr(obj, img_field)
+            if img_val:  # img_val is already a URL string in Cloudinary
+                previews.append(
+                    f'<img src="{img_val}" '
+                    f'style="max-height: 100px; margin-right: 5px; border-radius:5px;" />'
+                )
+        return mark_safe("".join(previews)) if previews else "No Image"
+
+
+    list_display = ("title", "created_at", "image_preview")
+    readonly_fields = ("image_preview",)

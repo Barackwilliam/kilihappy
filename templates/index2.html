@@ -494,6 +494,83 @@ p {
 </style>
 
 
+
+
+{% comment %}
+
+
+<section class="safari-hero">
+
+    <div class="safari-content-box">
+        
+        <!-- TITLE -->
+        <h1 class="safari-title">Mount Kilimanjaro & Tanzania Safaris</h1>
+
+        <!-- PARAGRAPHS -->
+        <p class="safari-text">
+            Discover the breathtaking adventure of climbing <b>Mount Kilimanjaro</b>, Africa’s highest summit.
+            Choose from legendary routes like <b>Machame</b>, <b>Lemosho</b>, or <b>Marangu</b>, each offering
+            unforgettable scenery from rainforest to snowy peak.
+        </p>
+
+        <p class="safari-text">
+            After your climb, dive into world-class <b>Tanzania safaris</b>. Explore the <b>Serengeti</b>,
+            witness the <b>Great Migration</b>, and experience the wildlife haven of the <b>Ngorongoro Crater</b>.
+            Luxury lodges, stunning landscapes, and lifetime memories await you.
+        </p>
+
+        <!-- CAROUSEL -->
+        <div id="safariCarousel" class="carousel slide safari-carousel mt-4" data-bs-ride="carousel">
+
+            <div class="carousel-inner">
+                {% for item in climbing %}
+                
+                    {% if item.image_1 %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img src="{{ item.image_1 }}" class="d-block w-100">
+                        <div class="caption-box">{{ item.title_1 }}</div>
+                    </div>
+                    {% endif %}
+
+                    {% if item.image_2 %}
+                    <div class="carousel-item">
+                        <img src="{{ item.image_2 }}" class="d-block w-100">
+                        <div class="caption-box">{{ item.title_2 }}</div>
+                    </div>
+                    {% endif %}
+
+                    {% if item.image_3 %}
+                    <div class="carousel-item">
+                        <img src="{{ item.image_3 }}" class="d-block w-100">
+                        <div class="caption-box">{{ item.title_3 }}</div>
+                    </div>
+                    {% endif %}
+
+                    {% if item.image_4 %}
+                    <div class="carousel-item">
+                        <img src="{{ item.image_4 }}" class="d-block w-100">
+                        <div class="caption-box">{{ item.title_4 }}</div>
+                    </div>
+                    {% endif %}
+                
+                {% endfor %}
+            </div>
+
+            <!-- CONTROLS -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#safariCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#safariCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+{% endcomment %}
 <div class="container">
     <h1 style="text-align: center; font-family: 'Times New Roman', Times, serif; color: #b21f1f;">
         <b>Mt Kilimanjaro Climbing and Tanzania Safaris</b>
