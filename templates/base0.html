@@ -41,6 +41,7 @@
   <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
   <!-- Customized Bootstrap Stylesheet -->
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'js/tracker.js' %}" rel="stylesheet">
   <!-- Template Stylesheet -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
@@ -344,7 +345,8 @@
       background: rgba(255, 184, 28, 0.05);
     }
     .sidebar-nav > li > a.dropdown-toggle {
-      justify-content: space-between;
+      position: relative;
+      padding-right: 3rem; /* Add space for the arrow */
     }
     .sidebar-nav > li > a.dropdown-toggle::after {
       content: '\f107';
@@ -352,21 +354,25 @@
       font-weight: 900;
       color: #ffffff;
       transition: transform 0.3s ease;
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
     }
     .sidebar-nav > li.open > a.dropdown-toggle::after {
-      transform: rotate(180deg);
+      transform: translateY(-50%) rotate(180deg);
       color: #FFB81C;
     }
     .sidebar-nav > li.open .sidebar-submenu {
       max-height: 500px;
     }
     .sidebar-submenu li a {
-      padding: 0.75rem 2.5rem;
+      padding: 0.75rem 1.5rem 0.75rem 3.5rem; /* Adjusted left padding for subitems */
       font-size: 0.95rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     }
     .sidebar-submenu li a:hover {
-      padding-left: 2.5rem;
+      padding-left: 3.5rem;
     }
     .sidebar-submenu li a i {
       margin-right: 0.75rem;
@@ -764,9 +770,9 @@
         <div class="d-inline-flex align-items-center" style="height: 45px;">
           <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>Olasiti, Arusha, Tanzania</small>
           <small class="me-3 text-light">
-            <a href="https://wa.me/255658571653" class="text-light text-decoration-none">
+            <a href="https://wa.me/255610034753" class="text-light text-decoration-none">
               <i class="fab fa-whatsapp me-2" style="color: #25D366;"></i>
-              +255658571653
+              +255610034753
             </a>
           </small>
           <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@kilihappytanzaniaadventures.com</small>
@@ -783,51 +789,93 @@
       </div>
     </div>
   </div>
+<div class="container-fluid d-flex flex-column align-items-center justify-content-center text-center py-1 touristic-bg">
+  <a href="mailto:info@kilihappytanzaniaadventures.com" class="text-white contact-link mb-1">
+    <i class="fas fa-envelope"></i> info@kilihappytanzaniaadventures.com
+  </a>
+  
+  <a href="tel:+255610034753" class="text-white contact-link mb-1">
+    <i class="fas fa-phone"></i> +255610034753
+  </a>
 
-   <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative" style="background: #11274b; color: #fff;">
-  <div class="container">
-     <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone te"></i>: +255658571653</a>
-    <div class="d-flex align-items-center justify-content-between w-100">
-      <div class="d-flex align-items-center">
-     <a href="mailto:info@kilihappytanzaniaadventures.com" class="text-white me-3"><i class="fas fa-envelope"></i>: info@kilihappytanzaniaadventures.com</a>
-      </div>
-    </div>
+  <!-- <p class="text-white contact-link mb-1">
+    <i class="fas fa-map-marker-alt me-2"></i> Olasiti, Arusha, Tanzania
+  </p> -->
+
+  <div class="d-inline-flex align-items-center mt-1" style="height: 32px;">
+    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-1" href="#"><i class="fab fa-twitter fw-normal"></i></a>
+    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
+    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-1" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
+    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-1" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href="#"><i class="fab fa-youtube fw-normal"></i></a>
   </div>
+</div>
+
+<style>
+  /* 🌅 Touristic Gradient Background */
+  .touristic-bg {
+    background: linear-gradient(135deg, #005C97 0%, #363795 40%, #FFB347 100%);
+    background-size: 200% 200%;
+    animation: gradientFlow 10s ease infinite;
+  }
+
+  @keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #FFB81C;
+    font-size: 0.95rem;
+    padding: 3px 8px;
+    border-radius: 12px;
+    background: rgba(26, 42, 68, 0.35);
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .contact-link:hover {
+    color: #FFD700;
+    transform: scale(1.05);
+  }
+
+  .contact-link i {
+    margin-right: 5px;
+    color: #FF9E00;
+  }
+
+  @media (max-width: 768px) {
+    .contact-link {
+      font-size: 0.9rem;
+      padding: 2px 6px;
+    }
+  }
+</style>
 </nav>
 
-
- <nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative" style="background: #1a2a44; color: #fff;">
-  <div class="container">
+<nav class="container-fluid premium-navbar px-4 px-lg-5 position-relative" 
+     style="background: #1a2a44; color: #fff; padding-top: 0.3rem !important; padding-bottom: 0.3rem !important;">
+  <div class="container" style="padding-top: 0.3rem !important; padding-bottom: 0.3rem !important;">
     <div class="d-flex align-items-center justify-content-between w-100">
       <a href="{% url 'admin:index' %}" class="navbar-brand d-flex align-items-center">
-    <img src="{% static 'img/logo.jpg' %}" alt="Logo"  class="logo-img me-2" style="width: 70px; height: auto;">
-        <div>
-          <span style="font-size: 1.5rem; font-weight: bold; color: #ffcc00; font-family: 'Merienda', cursive;">Kilihappy</span>
-          <p style="font-size: 1rem; margin: 0; color: #ffcc00;font-family: 'Merienda', cursive;">Tanzania Adventures</p>
-        </div>
+        <img src="{% static 'img/kili_logo.jpg' %}" alt="Logo" class="logo-img me-2" style="width: 60px; height: auto;">
       </a>
       <div class="d-flex align-items-center">
-        <!-- <a href="tel:+255760389236" class="text-white me-3"><i class="fas fa-phone"></i> +255 760 389 236</a><br>
-        <a href="mailto:info@greattimeexp" class="text-white me-3"><i class="fas fa-envelope"></i> info@greattimeexp</a> -->
-        <div class="dropdown">
-          <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="me-1"> EN
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-            <li><a class="dropdown-item text-light" href="#">English</a></li>
-            <li><a class="dropdown-item text-light" href="#">Swahili</a></li>
-          </ul>
-        </div>
-        <button style="color: yellow;" class="navbar-toggler d-lg-none ms-2 border-1 shadow-lg rounded-0 p-1" 
-        type="button" 
-        onclick="toggleSidebar()" 
-        style="font-size: 1.6rem; transition: 0.3s ease;">
-          <i class="fas fa-bars"></i>
-        <h3 class="p-1 shadow-lg rounded-1">Menu</h3> </button> 
+        <button 
+          class="navbar-toggler d-lg-none ms-2 border-1 shadow-lg rounded-2 p-2" 
+          type="button" 
+          onclick="toggleSidebar()" 
+          style="color: yellow; font-size: 1.4rem; background-color: transparent; transition: 0.3s ease; border: 1.6px solid yellow;">
+          <i class="fas fa-bars" style="font-size: 1.5rem;"></i> Menu
+        </button>
       </div>
     </div>
   </div>
 </nav>
+
 
 
   <!-- Enhanced Sidebar for Mobile -->
@@ -835,11 +883,11 @@
     <div class="sidebar-header">
       <div class="d-flex align-items-center">
         {% for i in compan %}
-        <img src="{{i.image}}" alt="Logo">
+        <img src="{{i.image}}" alt="Logo" class="logo-img me-2" style="width: 60px; height: auto;">
         {% empty %}
-        <img src="{% static 'img/logo.jpg' %}" alt="Logo">
+        <img src="{% static 'img/kili_logo.jpg' %}" alt="Logo" class="logo-img me-2" style="width: 60px; height: auto;">
         {% endfor %}
-        <h4 class="display-1">Kilihappy <small>Tanzania Adventures</small></h4>
+        <p style="color: #ffcc00;" class=""> Kilihappy Tanzania Adventures</p>
        
       </div>
       <i class="fas fa-times close-sidebar" onclick="toggleSidebar()"></i>
@@ -885,7 +933,7 @@
           <li><a href="{% url 'testimonial' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-quote-left"></i>Testimonials</a></li>
           <li><a href="{% url 'contact' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-envelope"></i>Contact</a></li>
           <li><a href="{% url 'questions' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-question-circle"></i>FAQ</a></li>
-          <li><a href="{% url 'questions' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-question-circle"></i>FAQ</a></li>
+          <li><a href="{% url 'terms_and_conditions' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-question-circle"></i>terms & conditions</a></li>
         </ul>
       </li>
     </ul>
@@ -909,7 +957,7 @@
             <a class="btn btn-link" href="{% url 'destinations_list' %}" onclick="showLoading(event)">Our Destinations</a>
             <a class="btn btn-link" href="{% url 'team' %}" onclick="showLoading(event)">Our Travel Guides</a>
             <a class="btn btn-link" href="">Privacy Policy</a>
-            <a class="btn btn-link" href="">Terms & Condition</a>
+            <a class="btn btn-link" href="{% url 'terms_and_conditions' %}">Terms & Condition</a>
             <a class="btn btn-link" href="{% url 'questions' %}" onclick="showLoading(event)">FAQs & Help</a>
           </div>
           <div class="col-lg-3 col-md-6">
@@ -917,7 +965,7 @@
             <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Olasiti, Arusha, Tanzania</p>
             <p class="mb-2">
               <i class="fab fa-whatsapp me-3" style="color: #25D366;"></i>
-              +255658571653
+              +255610034753
             </p>
             <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@kilihappytanzaniaadventures.com</p>
             <div class="d-flex pt-2">
