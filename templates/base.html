@@ -780,99 +780,7 @@
       padding: 0.5rem 0;
     }
 
-    /* Modern Gallery Styles */
-    .gallery-section {
-      padding: 3rem 0;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    }
-
-    .gallery-title {
-      font-family: 'Merienda', cursive;
-      font-size: 2.5rem;
-      color: #1a2a44;
-      margin-bottom: 2rem;
-      text-align: center;
-      position: relative;
-      padding-bottom: 15px;
-    }
-
-    .gallery-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 4px;
-      background: linear-gradient(90deg, #FFB81C, #FF9E00);
-      border-radius: 2px;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 20px 0;
-    }
-
-    .gallery-item {
-      position: relative;
-      border-radius: 15px;
-      overflow: hidden;
-      cursor: pointer;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      height: 250px;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.1);
-    }
-
-    .gallery-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%);
-      display: flex;
-      align-items: flex-end;
-      padding: 20px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .gallery-item:hover .gallery-overlay {
-      opacity: 1;
-    }
-
-    .gallery-title-text {
-      color: white;
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin: 0;
-      transform: translateY(20px);
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item:hover .gallery-title-text {
-      transform: translateY(0);
-    }
-
-    /* Lightbox Modal - Compact Version */
+    /* Lightbox Modal - For Gallery */
     .lightbox-modal {
       display: none;
       position: fixed;
@@ -895,8 +803,8 @@
 
     .lightbox-content {
       position: relative;
-      max-width: 85%;
-      max-height: 85%;
+      max-width: 90%;
+      max-height: 90%;
       animation: zoomIn 0.3s ease;
     }
 
@@ -907,7 +815,7 @@
 
     .lightbox-img {
       max-width: 100%;
-      max-height: 70vh;
+      max-height: 80vh;
       border-radius: 10px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     }
@@ -965,7 +873,32 @@
       transform: scale(1.1);
     }
 
-    /* Gallery in Footer */
+    /* Special Gallery Link in Sidebar */
+    .gallery-link-item {
+      margin-top: 10px;
+      border-top: 2px solid rgba(255, 184, 28, 0.3);
+      padding-top: 10px;
+      background: rgba(255, 184, 28, 0.1);
+    }
+
+    .gallery-link-item a {
+      background: rgba(255, 184, 28, 0.15);
+      border-left: 4px solid #FFB81C;
+      font-weight: 700;
+      color: #FFB81C !important;
+    }
+
+    .gallery-link-item a:hover {
+      background: rgba(255, 184, 28, 0.25);
+      color: #FFD700 !important;
+    }
+
+    .gallery-link-item i {
+      color: #FFB81C;
+      font-size: 1.3rem;
+    }
+
+    /* Gallery in Footer - Removed the "View Full Gallery" button */
     .footer-gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -988,26 +921,6 @@
       width: 100%;
       height: 80px;
       object-fit: cover;
-    }
-
-    /* Special Gallery Link in Sidebar */
-    .gallery-link-item {
-      margin-top: 10px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 10px;
-    }
-
-    .gallery-link-item a {
-      background: rgba(255, 184, 28, 0.15);
-      border-left: 3px solid #FFB81C;
-    }
-
-    .gallery-link-item a:hover {
-      background: rgba(255, 184, 28, 0.25);
-    }
-
-    .gallery-link-item i {
-      color: #FFB81C;
     }
 
     /* Responsive Adjustments */
@@ -1043,19 +956,6 @@
       .navbar-brand img {
         width: 40px;
         height: 40px;
-      }
-      
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 15px;
-      }
-      
-      .gallery-item {
-        height: 200px;
-      }
-      
-      .gallery-title {
-        font-size: 2rem;
       }
       
       .lightbox-content {
@@ -1105,19 +1005,6 @@
       .whatsapp-chat-popup {
         width: 90%;
         left: 5%;
-      }
-      
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 10px;
-      }
-      
-      .gallery-item {
-        height: 180px;
-      }
-      
-      .gallery-title {
-        font-size: 1.8rem;
       }
       
       .footer-gallery {
@@ -1294,7 +1181,7 @@
       <li><a href="{% url 'about' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-info-circle"></i>About Us</a></li>
       <li><a href="{% url 'service' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-concierge-bell"></i>Services</a></li>
       <li>
-        <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(this)"><i class="fas fa-sun"></i>Safari</a>
+        <a href="#" class="dropdown-toggle" onclick="toggleSubmenu(this)"><i class="fas fa-globe"></i>Safari</a>
         <ul class="sidebar-submenu">
           {% for s in safari_list %}
           <li><a href="{% url 'safari_detail' s.id %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-paw"></i>{{ s.title }}</a></li>
@@ -1333,7 +1220,7 @@
           <li><a href="{% url 'terms_and_conditions' %}" onclick="toggleSidebar(); showLoading(event)"><i class="fas fa-file-contract"></i>Terms & Conditions</a></li>
         </ul>
       </li>
-      <!-- Gallery Link - Added below Others (not inside it) -->
+      <!-- Gallery Link - Inside Sidebar Only (Below Others) -->
       <li class="gallery-link-item">
         <a href="javascript:void(0);" onclick="openGalleryModal(); toggleSidebar();"><i class="fas fa-images"></i>See Our Gallery</a>
       </li>
@@ -1361,25 +1248,6 @@
     <!-- Content Block -->
     {% block content %}
     {% endblock %}
-    
-    <!-- Gallery Section (You can place this wherever you want in your templates) -->
-    {% if gallery %}
-    <section class="gallery-section">
-      <div class="container">
-        <h2 class="gallery-title">Our Gallery</h2>
-        <div class="gallery-grid">
-          {% for i in gallery %}
-          <div class="gallery-item" onclick="openGalleryImage({{ forloop.counter0 }})">
-            <img src="{{i.image}}" alt="{{i.Title}}">
-            <div class="gallery-overlay">
-              <p class="gallery-title-text">{{i.Title}}</p>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-    </section>
-    {% endif %}
     
     <!-- Footer -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -1420,7 +1288,7 @@
               </div>
               {% endfor %}
             </div>
-            <button class="btn btn-warning mt-3" onclick="openGalleryModal()">View Full Gallery</button>
+            <!-- Note: Removed the "View Full Gallery" button from footer -->
           </div>
           <div class="col-lg-3 col-md-6">
             <h4 class="text-white mb-3">Newsletter</h4>
@@ -1460,8 +1328,8 @@
     let galleryImages = [];
     
     document.addEventListener('DOMContentLoaded', function() {
-      // Initialize gallery images
-      galleryImages = Array.from(document.querySelectorAll('.gallery-item img')).map(img => ({
+      // Initialize gallery images from footer gallery
+      galleryImages = Array.from(document.querySelectorAll('.footer-gallery-item img')).map(img => ({
         src: img.src,
         title: img.alt
       }));
