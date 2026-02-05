@@ -374,7 +374,7 @@ document.getElementById("scrollToBooking")?.addEventListener("click", function (
 <!-- Why Travel With Us Section -->
 <div class="container py-5">
   <div class="text-center mb-5">
-    <h2 class="text-uppercase fw-bold text-dark">Why Travel with <span class="text-dark">Kilihappy Tanzania Adventure</span></h2>
+    <h2 class="text-uppercase fw-bold text-dark">Why Travel with <span class="text-dark">KILI PRECIOUS TOURS AND TREKKING</span></h2>
     <p class="text-danger fst-italic">More than just a journey — it's a life-changing experience.</p>
   </div>
 
@@ -515,57 +515,56 @@ document.getElementById("scrollToBooking")?.addEventListener("click", function (
     }
 
 </style>
-
 <div class="container main-container">
 
     <h1 class="heading-title">
         Mt Kilimanjaro Climbing and Tanzania Safaris
     </h1>
 
-     <!-- PARAGRAPHS -->
-        <p style="color:black" class="safari-text">
-            Embark on unforgettable <b>Mt Kilimanjaro climbing</b> and conquer Africa’s highest peak, standing tall at 5,895 meters. Choose iconic routes like the <b>scenic Machame Route,</b> the challenging <b>Lemosho Route,</b> or the shorter <b>Marangu Route</b>, each offering breathtaking views and a unique trekking experience. As you ascend, traverse diverse ecosystems—from lush rainforests to alpine deserts—culminating in the incredible achievement of reaching <b>Uhuru Peak,</b> the “Roof of Africa.” Whether you’re a <b>seasoned climber</b> or a first-time adventurer, these tours promise a life-changing journey filled with natural beauty and personal triumph.
-        </p>
+    <!-- PARAGRAPHS -->
+    <p style="color:black" class="safari-text">
+        Embark on unforgettable <b>Mt Kilimanjaro climbing</b> and conquer Africa’s highest peak, standing tall at 5,895 meters. Choose iconic routes like the <b>scenic Machame Route,</b> the challenging <b>Lemosho Route,</b> or the shorter <b>Marangu Route</b>, each offering breathtaking views and a unique trekking experience. As you ascend, traverse diverse ecosystems—from lush rainforests to alpine deserts—culminating in the incredible achievement of reaching <b>Uhuru Peak,</b> the “Roof of Africa.” Whether you’re a <b>seasoned climber</b> or a first-time adventurer, these tours promise a life-changing journey filled with natural beauty and personal triumph.
+    </p>
 
-        <p style="color:black" class="safari-text">
-          After the climb, immerse yourself in the wonders of <b>Tanzania safaris,</b> exploring world-famous destinations like the<b> Serengeti,</b> home to the spectacular Great Migration, or the wildlife-rich <b>Ngorongoro Crater</b>, where you can encounter the legendary Big Five. Visit <b>Tarangire National Park</b>, renowned for its majestic elephant herds and ancient baobab trees, and unwind in luxury lodges or tented camps featuring gourmet dining and personalized service. Combining <b>Mount Kilimanjaro</b> climbing tours with Tanzania safaris offers the perfect blend of adventure and relaxation, creating a once-in-a-lifetime experience in the heart of Africa.
-        </p>
+    <p style="color:black" class="safari-text">
+        After the climb, immerse yourself in the wonders of <b>Tanzania safaris,</b> exploring world-famous destinations like the<b> Serengeti,</b> home to the spectacular Great Migration, or the wildlife-rich <b>Ngorongoro Crater</b>, where you can encounter the legendary Big Five. Visit <b>Tarangire National Park</b>, renowned for its majestic elephant herds and ancient baobab trees, and unwind in luxury lodges or tented camps featuring gourmet dining and personalized service. Combining <b>Mount Kilimanjaro</b> climbing tours with Tanzania safaris offers the perfect blend of adventure and relaxation, creating a once-in-a-lifetime experience in the heart of Africa.
+    </p>
 
-       <!-- Modern Bootstrap Carousel -->
-<div id="safariCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
+    <!-- Modern Bootstrap Carousel -->
+    <div id="safariCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
 
-    <div class="carousel-inner">
-        {% for item in climbing %}
+        <div class="carousel-inner">
+            {% for item in climbing %}
+                {% for num in "12345678" %}
+                    {% with img=item|get_dynamic_image:num title=item|get_dynamic_title:num %}
+                        {% if img %}
+                        <div class="carousel-item {% if forloop.parentloop.first and forloop.first %}active{% endif %}">
 
-            {% for num in "12345678" %}
-                {% with img=item|get_dynamic_image:num title=item|get_dynamic_title:num %}
-                    {% if img %}
-                    <div class="carousel-item {% if forloop.parentloop.first and forloop.first %}active{% endif %}">
-                        <img src="{{ img }}" class="d-block w-100" alt="Safari Image">
+                            <img src="{{ img }}" class="d-block w-100" alt="Safari Image">
 
-                        <!-- Centered Caption -->
-                        <div class="carousel-caption-center">
-                            <h3>{{ title }}</h3>
+                            <!-- Caption ON IMAGE (BOTTOM) -->
+                            <div class="carousel-caption-bottom">
+                                <h6 style="color: yellow;">{{ title }}</h6>
+                            </div>
+
                         </div>
-                    </div>
-                    {% endif %}
-                {% endwith %}
+                        {% endif %}
+                    {% endwith %}
+                {% endfor %}
             {% endfor %}
+        </div>
 
-        {% endfor %}
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#safariCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#safariCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
     </div>
-
-    <!-- Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#safariCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </button>
-
-    <button class="carousel-control-next" type="button" data-bs-target="#safariCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </button>
-
 </div>
-
 
 <style>
     .carousel-item {
@@ -579,36 +578,50 @@ document.getElementById("scrollToBooking")?.addEventListener("click", function (
         box-shadow: 0 4px 25px rgba(0,0,0,0.45);
     }
 
-    /* Centered Title + Glass Effect */
-    .carousel-caption-center {
+    /* Caption positioned at BOTTOM inside image */
+    .carousel-caption-bottom {
         position: absolute;
-        top: 50%;
+        bottom: 25px;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%);
 
-        background: rgba(0, 0, 0, 0.35);
-        padding: 18px 30px;
-        border-radius: 12px;
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
+        width: auto;
+        max-width: 85%;
 
-        animation: fadeIn 1.2s ease-in-out;
+        background: linear-gradient(
+            to right,
+            rgba(0,0,0,0.85),
+            rgba(0,0,0,0.55)
+        );
+
+        padding: 16px 30px;
+        border-radius: 14px;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+
+        animation: slideUp 0.9s ease;
     }
 
-    .carousel-caption-center h3 {
+    .carousel-caption-bottom h3 {
         margin: 0;
         color: #fff;
         font-weight: 800;
-        font-size: 32px;
+        font-size: 28px;
         letter-spacing: 1px;
         text-align: center;
         text-shadow: 0 4px 10px rgba(0,0,0,0.8);
     }
 
-    /* Fade animation */
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translate(-50%, -40%); }
-        to   { opacity: 1; transform: translate(-50%, -50%); }
+    /* Elegant slide-up animation */
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translate(-50%, 15px);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
     }
 
     #safariCarousel .carousel-inner {
