@@ -87,7 +87,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'jamiitek_middleware.JamiiTekStatusMiddleware
+    'jamiitek_middleware.JamiiTekStatusMiddleware',
 ]
 
 ROOT_URLCONF = 'telusko.urls'
