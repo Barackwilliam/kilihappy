@@ -152,7 +152,7 @@ SUSPENSION_HTML = """<!DOCTYPE html>
     <div class="footer-brand">Jamii<span>Tek</span></div>
     <div class="footer-tagline">Digital Solutions &middot; Tanzania</div>
     <div class="footer-links">
-      <a href="https://jamiitek.com">jamiitek.co.tz</a>
+      <a href="https://jamiitek.com">jamiitek.com</a>
       <a href="mailto:info@jamiitek.com">info@jamiitek.com</a>
     </div>
   </div>
