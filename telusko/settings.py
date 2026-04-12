@@ -70,6 +70,10 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+JAMIITEK_API_KEY = "7ACmWMkJh9eRw8h3fe2whtcFSbLZUD392kUXtTmZLqqgB-TSCH25exFf58Ed462p"
+JAMIITEK_API_URL = "https://jamiitek.com/api/site-status/"
+
+
 # If using uploader:
 CKEDITOR_UPLOAD_PATH = 'uploads/'  # Folder for uploaded images/files
 
@@ -83,6 +87,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'jamiitek_middleware.JamiiTekStatusMiddleware
 ]
 
 ROOT_URLCONF = 'telusko.urls'
